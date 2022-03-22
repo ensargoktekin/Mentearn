@@ -32,19 +32,22 @@ class _HomeMenteeState extends State<HomeMentee> {
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
+              fit: BoxFit.fill,
               image: AssetImage("images/Blob3.png"),
             ),
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Row(
+
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(top: 100, left: 50),
+                    padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.12, left: MediaQuery.of(context).size.width*0.12),
                     child: Text(
                       "My\nTasks",
                       style: TextStyle(
-                        height: 1,
+                        height: MediaQuery.of(context).size.height*0.0011,
                         fontSize: 40,
                         fontWeight: FontWeight.bold,
                         fontFamily: "Poppins",
@@ -56,7 +59,7 @@ class _HomeMenteeState extends State<HomeMentee> {
                       setState(() {});
                     },
                     child: Padding(
-                      padding: EdgeInsets.only(left: 60, top: 80),
+                      padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.12, top: MediaQuery.of(context).size.height*0.08,right: MediaQuery.of(context).size.width*0.07),
                       child: ClipRRect(
                         child: Image.asset("images/add_task.png"),
                       ),
@@ -70,7 +73,7 @@ class _HomeMenteeState extends State<HomeMentee> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(left: 50, top: 150),
+                        padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.13, top: MediaQuery.of(context).size.height*0.17),
                         child: LiquidCustomProgressIndicator(
                           value: tasks_done / total_tasks,
                           valueColor: AlwaysStoppedAnimation(Colors.green),
@@ -80,21 +83,21 @@ class _HomeMenteeState extends State<HomeMentee> {
                         ),
                       ),
                       SizedBox(
-                        height: 10,
+                        height: MediaQuery.of(context).size.height*0.01,
                       ),
                       Row(
                         children: [
-                          SizedBox(width: 55, height: 10),
+                          SizedBox(width: MediaQuery.of(context).size.width*0.145, height: MediaQuery.of(context).size.height*0.01),
                           Image.asset("images/tree.png"),
                         ],
                       ),
                       SizedBox(
-                        height: 10,
+                        height: MediaQuery.of(context).size.height*0.01,
                       ),
                       Row(
                         children: [
                           SizedBox(
-                            width: 40,
+                            width: MediaQuery.of(context).size.width*0.11,
                           ),
                           Text(
                             "STAGE 1",
@@ -113,13 +116,13 @@ class _HomeMenteeState extends State<HomeMentee> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(
-                        height: 150,
+                        height: MediaQuery.of(context).size.height*0.15,
                       ),
                       Row(
                         children: [
                           SizedBox(
-                            width: 50,
-                            height: 40,
+                            width: MediaQuery.of(context).size.width*0.13,
+                            height: MediaQuery.of(context).size.height*0.04,
                             child: FlatButton(
                                 onPressed: () {
                                   setState(() {
@@ -167,8 +170,8 @@ class _HomeMenteeState extends State<HomeMentee> {
                       Row(
                         children: [
                           SizedBox(
-                            width: 50,
-                            height: 40,
+                            width: MediaQuery.of(context).size.width*0.13,
+                            height: MediaQuery.of(context).size.height*0.04,
                             child: FlatButton(
                                 onPressed: () {
                                   setState(() {
@@ -216,8 +219,8 @@ class _HomeMenteeState extends State<HomeMentee> {
                       Row(
                         children: [
                           SizedBox(
-                            width: 50,
-                            height: 40,
+                            width: MediaQuery.of(context).size.width*0.13,
+                            height: MediaQuery.of(context).size.height*0.04,
                             child: FlatButton(
                                 onPressed: () {
                                   setState(() {
@@ -265,8 +268,8 @@ class _HomeMenteeState extends State<HomeMentee> {
                       Row(
                         children: [
                           SizedBox(
-                            width: 50,
-                            height: 40,
+                            width: MediaQuery.of(context).size.width*0.13,
+                            height: MediaQuery.of(context).size.height*0.04,
                             child: FlatButton(
                                 onPressed: () {
                                   setState(() {

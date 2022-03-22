@@ -60,26 +60,30 @@ class _HomeScreenMentorState extends State<HomeScreenMentor> {
       body: PageView(
         controller: pageController,
         children: [
-          Container(color: Colors.green),
+          //Container(color: Colors.green),
+          HomeMentor(),
           RequestPage(),
           ChatScreenMentor(),
           MentorProfile(),
           DashboardScreen(),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.explore), label: 'Discover'),
-          BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'Chat'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.video_call_rounded), label: 'Google Meet'),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.deepOrangeAccent,
-        unselectedItemColor: Colors.orangeAccent,
-        onTap: onTapped,
+      bottomNavigationBar: SizedBox(
+        height: MediaQuery.of(context).size.height*0.107,
+        child: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home', backgroundColor: Colors.orange),
+            BottomNavigationBarItem(icon: Icon(Icons.person_add), label: 'Request', backgroundColor: Colors.orange),
+            BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'Chat', backgroundColor: Colors.orange),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile', backgroundColor: Colors.orange),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.video_call_rounded), label: 'Google Meet', backgroundColor: Colors.orange),
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.orange[50],
+          onTap: onTapped,
+        ),
       ),
     );
   }

@@ -4,6 +4,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 import 'whitescreen.dart';
 import 'mentee_cover_letter_screen.dart';
+import 'dart:io';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:image_picker/image_picker.dart';
 
 final _firestore = FirebaseFirestore.instance;
 late User loggedInUser;
@@ -63,6 +66,8 @@ class _MenteeInfoState extends State<MenteeInfo> {
     }
   }
 
+  File? _photo;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -77,7 +82,7 @@ class _MenteeInfoState extends State<MenteeInfo> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(top: 75.0),
+                    padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.08),
                     child: Text(
                       'Create Your Profile',
                       textAlign: TextAlign.center,
@@ -90,47 +95,86 @@ class _MenteeInfoState extends State<MenteeInfo> {
                     ),
                   ),
                   SizedBox(
-                    height: 40,
+                    height: MediaQuery.of(context).size.height*0.04,
                   ),
                   Center(
                     child: CircleAvatar(
-                      radius: 50,
+                      radius: MediaQuery.of(context).size.width*0.125,
+                      child: _photo != null
+                    ? Image.file(
+                    _photo!,
+                      width: MediaQuery.of(context).size.width*0.25,
+                      height: MediaQuery.of(context).size.height*0.15,
+                      fit: BoxFit.fitHeight,
+                    )
+                          : Container(
+                  decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                      borderRadius: BorderRadius.circular(50)),
+        width: MediaQuery.of(context).size.width*0.25,
+        height: MediaQuery.of(context).size.height*0.15,
+        child: Icon(
+          Icons.camera_alt,
+          color: Colors.grey[800],
+        ),
+      ),
                     ),
                   ),
                   SizedBox(
-                    height: 5,
+                    height: MediaQuery.of(context).size.height*0.015,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    //crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      /*GestureDetector(
-                          onTap: () {
-                            setState(() {
-
-                            });
-                          },
-                          child: ClipRRect(
-                              child: Image.asset('images/Take_A_pic.png')),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),*/
                       GestureDetector(
-                        onTap: () {
-                          setState(() {});
+                        onTap: () async {
+                          XFile? xFile = await ImagePicker()
+                              .pickImage(source: ImageSource.camera);
+                          if (xFile == null) return;
+                          final ppicRef = firebase_storage
+                              .FirebaseStorage.instance
+                              .ref("/profilePhotos")
+                              .child(FirebaseAuth.instance.currentUser!.uid +
+                              ".jpg");
+                          await ppicRef.putFile(File(xFile.path));
                         },
                         child: ClipRRect(
-                            child: Image.asset('images/Upload_a_pic.png')),
+                            child: Image.asset(
+                              'images/Take_A_pic.png',
+                              height: MediaQuery.of(context).size.height*0.022,
+                            )),
+                      ),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width*0.03,
+                      ),
+                      GestureDetector(
+                        onTap: () async {
+                          XFile? xFile = await ImagePicker()
+                              .pickImage(source: ImageSource.gallery);
+                          if (xFile == null) return;
+                          final ppicRef = firebase_storage
+                              .FirebaseStorage.instance
+                              .ref("/profilePhotos")
+                              .child(FirebaseAuth.instance.currentUser!.uid +
+                              ".jpg");
+                          await ppicRef.putFile(File(xFile.path));
+                        },
+                        child: ClipRRect(
+                            child: Image.asset(
+                              'images/Upload_a_pic.png',
+                              height: MediaQuery.of(context).size.height*0.02,
+                            )),
                       ),
                     ],
                   ),
                   SizedBox(
-                    height: 30,
+                    height: MediaQuery.of(context).size.height*0.02,
                   ),
                   Row(
                     children: [
                       SizedBox(
-                        width: 10,
+                        width: MediaQuery.of(context).size.width*0.03,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -144,9 +188,10 @@ class _MenteeInfoState extends State<MenteeInfo> {
                             ),
                           ),
                           SizedBox(
-                            width: 110,
-                            height: 30,
+                            width: MediaQuery.of(context).size.width*0.3,
+                            height: MediaQuery.of(context).size.height*0.035,
                             child: TextField(
+                              autocorrect: false,
                               style: TextStyle(
                                 fontSize: 12,
                               ),
@@ -182,22 +227,23 @@ class _MenteeInfoState extends State<MenteeInfo> {
                         ],
                       ),
                       SizedBox(
-                        width: 15,
+                        width: MediaQuery.of(context).size.width*0.04,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'School-Department',
+                            'Education',
                             style: TextStyle(
                               fontSize: 16,
                               fontFamily: 'Poppins',
                             ),
                           ),
                           SizedBox(
-                            width: 130,
-                            height: 30,
+                            width: MediaQuery.of(context).size.width*0.32,
+                            height: MediaQuery.of(context).size.height*0.035,
                             child: TextField(
+                              autocorrect: false,
                               style: TextStyle(
                                 fontSize: 12,
                               ),
@@ -207,7 +253,7 @@ class _MenteeInfoState extends State<MenteeInfo> {
                                 school = value;
                               },
                               decoration: InputDecoration(
-                                hintText: 'Your School/Department',
+                                hintText: 'School/Department',
                                 contentPadding: EdgeInsets.symmetric(
                                     vertical: 1.0, horizontal: 5.0),
                                 border: OutlineInputBorder(
@@ -232,16 +278,13 @@ class _MenteeInfoState extends State<MenteeInfo> {
                           ),
                         ],
                       ),
-                      SizedBox(
-                        width: 10,
-                      ),
                     ],
                   ),
                   SizedBox(
-                    height: 10,
+                    height: MediaQuery.of(context).size.height*0.01,
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 10.0),
+                    padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.025),
                     child: Row(
                       children: [
                         Column(
@@ -256,9 +299,10 @@ class _MenteeInfoState extends State<MenteeInfo> {
                                 ),
                               ),
                               SizedBox(
-                                height: 30,
-                                width: 110,
+                                height: MediaQuery.of(context).size.height*0.035,
+                                width: MediaQuery.of(context).size.width*0.3,
                                 child: TextField(
+                                  autocorrect: false,
                                   controller: textControllerDate,
                                   textCapitalization:
                                       TextCapitalization.characters,
@@ -293,7 +337,7 @@ class _MenteeInfoState extends State<MenteeInfo> {
                               ),
                             ]),
                         SizedBox(
-                          width: 15,
+                          width: MediaQuery.of(context).size.width*0.04,
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -306,9 +350,10 @@ class _MenteeInfoState extends State<MenteeInfo> {
                               ),
                             ),
                             SizedBox(
-                              width: 130,
-                              height: 30,
+                              width: MediaQuery.of(context).size.width*0.33,
+                              height: MediaQuery.of(context).size.height*0.035,
                               child: TextField(
+                                autocorrect: false,
                                 style: TextStyle(
                                   fontSize: 11,
                                 ),
@@ -347,10 +392,10 @@ class _MenteeInfoState extends State<MenteeInfo> {
                     ),
                   ),
                   SizedBox(
-                    height: 5,
+                    height: MediaQuery.of(context).size.height*0.005,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 10),
+                    padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.025),
                     child: Text(
                       'Bio',
                       textAlign: TextAlign.start,
@@ -361,10 +406,10 @@ class _MenteeInfoState extends State<MenteeInfo> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 10),
+                    padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.025),
                     child: SizedBox(
-                      width: 200,
-                      height: 200,
+                      width: MediaQuery.of(context).size.width*0.5,
+                      height: MediaQuery.of(context).size.height*0.2,
                       child: TextField(
                         autocorrect: false,
                         keyboardType: TextInputType.multiline,

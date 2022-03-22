@@ -144,6 +144,7 @@ class _ChatScreenMenteeState extends State<ChatScreenMentee> {
                 children: <Widget>[
                   Expanded(
                     child: TextField(
+                      autocorrect: false,
                       controller: messageTextController,
                       onChanged: (value) {
                         messageText = value;

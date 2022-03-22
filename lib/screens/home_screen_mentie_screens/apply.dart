@@ -79,18 +79,18 @@ class _ApplyState extends State<Apply> {
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
                 ),
-                padding: EdgeInsets.all(35),
-                decoration: BoxDecoration(
-                    border: Border.all(color: Color(0xFF66a865), width: 2)),
+                padding: EdgeInsets.all(MediaQuery.of(context).size.width*0.09),
+                //decoration: BoxDecoration(
+                    //border: Border.all(color: Color(0xFF66a865), width: 2)),
                 height: MediaQuery.of(context).size.height * 0.55,
                 width: MediaQuery.of(context).size.width * 0.65,
               ),
             ),
             SizedBox(
-              height: 9,
+              height: MediaQuery.of(context).size.height*0.009,
             ),
             Container(
-                height: 25,
+                height: MediaQuery.of(context).size.height*0.025,
                 padding: EdgeInsets.only(bottom: 5),
                 child: OutlinedButton(
                   child: Text(
@@ -101,7 +101,7 @@ class _ApplyState extends State<Apply> {
                     onSurface: Color(0xFF497a48),
                     primary: Color(0xFF497a48),
                     backgroundColor: Colors.white,
-                    side: BorderSide(color: Color(0xFF66a865), width: 2),
+                    side: BorderSide(color: Colors.green, width: 2),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15)),
                   ),

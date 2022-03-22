@@ -53,10 +53,10 @@ class _MenteeCoverState extends State<MenteeCover> {
         Column(
           children: [
             SizedBox(
-              height: 70,
+              height: MediaQuery.of(context).size.height*0.1,
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 34),
+              margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.09),
               child: Center(
                   child: Text(
                 "Why Do You Want to Become a Mentee?",
@@ -67,7 +67,7 @@ class _MenteeCoverState extends State<MenteeCover> {
               )),
             ),
             SizedBox(
-              height: 50,
+              height: MediaQuery.of(context).size.height*0.06,
             ),
             Container(
               height: size.height * 0.3,
@@ -84,10 +84,10 @@ class _MenteeCoverState extends State<MenteeCover> {
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
               ),
-              padding: EdgeInsets.all(15),
+              padding: EdgeInsets.all(MediaQuery.of(context).size.width*0.04),
             ),
             SizedBox(
-              height: 30,
+              height: MediaQuery.of(context).size.height*0.03,
             ),
             GestureDetector(
               onTap: () async {
@@ -96,12 +96,17 @@ class _MenteeCoverState extends State<MenteeCover> {
                 });
                 Navigator.pushNamed(context, HomeScreenMentee.id);
               },
-              child: ClipRRect(
-                child: Icon(
-                  IconData(0xf03cf, fontFamily: 'MaterialIcons'),
-                  size: 50.0,
-                  color: Colors.orange,
-                ),
+              child: Row(
+                children: [
+                  SizedBox(width: MediaQuery.of(context).size.width*0.55),
+                  ClipRRect(
+                    child: Icon(
+                      IconData(0xf03cf, fontFamily: 'MaterialIcons'),
+                      size: 50.0,
+                      color: Colors.green,
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

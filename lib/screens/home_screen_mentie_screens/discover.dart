@@ -82,61 +82,59 @@ class _DiscoverStreamState extends State<DiscoverStream> {
           ),
         ),
       ),*/
-      body: SafeArea(
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Container(
-                height: MediaQuery.of(context).size.height * 0.7,
-                child: StreamBuilder<QuerySnapshot>(
-                  stream: _firestore.collection('mentors').snapshots(),
-                  builder: (context, snapshot) {
-                    if (!snapshot.hasData) {
-                      return Center(
-                        child: CircularProgressIndicator(
-                          backgroundColor: Colors.lightBlueAccent,
-                        ),
-                      );
-                    }
-                    List<Discover> mentorBoxes = [];
-                    final mentors = snapshot.data!.docs; // as Iterable;
-                    /*mentors.sort((b, a) {
-                      return b["timestamp"].compareTo(a["timestamp"]);
-                    });*/
-
-                    for (var mentor in mentors as Iterable) {
-                      department = mentor.data()['profession'];
-                      email = mentor.data()['email'];
-                      fullname = mentor.data()['fullname'];
-                      position = mentor.data()['profession'];
-                      bio = mentor.data()['bio'];
-                      /*final messageText = mentor.data()['text'];
-                  final messageSender = mentor.data()['sender'];*/
-
-                      final mentorBox = Discover(
-                        department: department,
-                        email: email,
-                        fullname: fullname,
-                        position: position,
-                        bio: bio,
-                      );
-                      mentorBoxes.add(mentorBox);
-                    }
-                    //print(mentorBoxes.length);
-                    return ListView(
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      //reverse: true,
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 10.0, vertical: 20.0),
-                      children: mentorBoxes,
+      body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height * 0.77,
+              child: StreamBuilder<QuerySnapshot>(
+                stream: _firestore.collection('mentors').snapshots(),
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: CircularProgressIndicator(
+                        backgroundColor: Colors.lightBlueAccent,
+                      ),
                     );
-                  },
-                ),
+                  }
+                  List<Discover> mentorBoxes = [];
+                  final mentors = snapshot.data!.docs; // as Iterable;
+                  /*mentors.sort((b, a) {
+                    return b["timestamp"].compareTo(a["timestamp"]);
+                  });*/
+
+                  for (var mentor in mentors as Iterable) {
+                    department = mentor.data()['profession'];
+                    email = mentor.data()['email'];
+                    fullname = mentor.data()['fullname'];
+                    position = mentor.data()['profession'];
+                    bio = mentor.data()['bio'];
+                    /*final messageText = mentor.data()['text'];
+                final messageSender = mentor.data()['sender'];*/
+
+                    final mentorBox = Discover(
+                      department: department,
+                      email: email,
+                      fullname: fullname,
+                      position: position,
+                      bio: bio,
+                    );
+                    mentorBoxes.add(mentorBox);
+                  }
+                  //print(mentorBoxes.length);
+                  return ListView(
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    //reverse: true,
+                    padding: EdgeInsets.symmetric(
+                        horizontal: MediaQuery.of(context).size.width*0.025, vertical: MediaQuery.of(context).size.height*0.02),
+                    children: mentorBoxes,
+                  );
+                },
               ),
-            ]),
-      ),
+            ),
+          ]),
     );
   }
 }
@@ -180,12 +178,13 @@ class _DiscoverState extends State<Discover> {
       ),
     );*/
         Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: EdgeInsets.all(MediaQuery.of(context).size.width*0.025),
       child: Container(
+        margin: EdgeInsets.symmetric(horizontal:MediaQuery.of(context).size.width*0.025),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(7)),
             border: Border.all(color: Colors.grey)),
-        height: MediaQuery.of(context).size.height * 0.30,
+        //height: MediaQuery.of(context).size.height * 0.30,
         width: MediaQuery.of(context).size.width * 0.8,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -194,6 +193,7 @@ class _DiscoverState extends State<Discover> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Container(
+                  //padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Center(
                       child: Text(
                     widget.department,
@@ -217,27 +217,36 @@ class _DiscoverState extends State<Discover> {
               radius: 30,
             ),*/
             SizedBox(
-              height: 5,
+              height: MediaQuery.of(context).size.height*0.01,
             ),
-            Text(
-              widget.fullname,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.04),
+              child: Text(
+                widget.fullname,
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
+              ),
             ),
             SizedBox(
-              height: 3,
+              height: MediaQuery.of(context).size.height*0.0005,
             ),
-            Text(widget.position,
-                style: TextStyle(fontSize: 15, color: Color(0xFF585C60))),
-            SizedBox(
-              height: 2,
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.04),
+              child: Text(widget.position,
+                  style: TextStyle(fontSize: 15, color: Color(0xFF585C60))),
             ),
-            Text(widget.bio,
-                style: TextStyle(fontSize: 15, color: Color(0xFF585C60))),
             SizedBox(
-              height: 30,
+              height: MediaQuery.of(context).size.height*0.005,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.04),
+              child: Text(widget.bio,
+                  style: TextStyle(fontSize: 15, color: Color(0xFF585C60))),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height*0.02,
             ),
             Container(
-                height: 25,
+                height: MediaQuery.of(context).size.height*0.04,
                 child: OutlinedButton(
                   child: Text(
                     '         Apply         ',
@@ -274,6 +283,9 @@ class _DiscoverState extends State<Discover> {
                 onPressed: () {},
               ),*/
                 ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height*0.02,
+            )
           ],
         ),
       ),

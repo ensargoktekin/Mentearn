@@ -33,7 +33,7 @@ class _RegistrationScreenMentorState extends State<RegistrationScreenMentor> {
         backgroundColor: Colors.white,
         leading: IconButton(
             icon: Icon(
-              Icons.backpack,
+              Icons.arrow_back,
               color: Colors.black,
             ),
             onPressed: () {
@@ -50,7 +50,7 @@ class _RegistrationScreenMentorState extends State<RegistrationScreenMentor> {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.0),
+        padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.06),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -64,6 +64,7 @@ class _RegistrationScreenMentorState extends State<RegistrationScreenMentor> {
               ),
             ),
             TextField(
+              autocorrect: false,
               keyboardType: TextInputType.emailAddress,
               textAlign: TextAlign.center,
               onChanged: (value) {
@@ -74,7 +75,7 @@ class _RegistrationScreenMentorState extends State<RegistrationScreenMentor> {
                   kTextFieldDecoration.copyWith(hintText: 'Enter your email'),
             ),
             SizedBox(
-              height: 10.0,
+              height: MediaQuery.of(context).size.height*0.01,
             ),
             Text(
               " Password",
@@ -85,6 +86,7 @@ class _RegistrationScreenMentorState extends State<RegistrationScreenMentor> {
               ),
             ),
             TextField(
+              autocorrect: false,
               obscureText: true,
               textAlign: TextAlign.center,
               onChanged: (value) {
@@ -95,7 +97,7 @@ class _RegistrationScreenMentorState extends State<RegistrationScreenMentor> {
                   hintText: 'Enter your password'),
             ),
             SizedBox(
-              height: 24.0,
+              height: MediaQuery.of(context).size.height*0.024,
             ),
             Flexible(
               child: GestureDetector(
@@ -133,13 +135,13 @@ class _RegistrationScreenMentorState extends State<RegistrationScreenMentor> {
                 child: ClipRRect(
                   child: Image.asset(
                     'images/Sign_up2.png',
-                    height: 40.0,
+                    height: MediaQuery.of(context).size.height*0.045,
                   ),
                 ),
               ),
             ),
             SizedBox(
-              height: 40.0,
+              height: MediaQuery.of(context).size.height*0.01,
             ),
             Center(
               child: Text(

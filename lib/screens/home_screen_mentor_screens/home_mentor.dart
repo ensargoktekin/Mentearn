@@ -32,19 +32,22 @@ class _HomeMentorState extends State<HomeMentor> {
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("images/Blob3.png"),
+              fit: BoxFit.fill,
+              image: AssetImage("images/mentor_blob.png"),
             ),
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Row(
+
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(top: 100, left: 50),
+                    padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.12, left: MediaQuery.of(context).size.width*0.12),
                     child: Text(
                       "My\nTasks",
                       style: TextStyle(
-                        height: 1,
+                        height: MediaQuery.of(context).size.height*0.0011,
                         fontSize: 40,
                         fontWeight: FontWeight.bold,
                         fontFamily: "Poppins",
@@ -56,7 +59,7 @@ class _HomeMentorState extends State<HomeMentor> {
                       setState(() {});
                     },
                     child: Padding(
-                      padding: EdgeInsets.only(left: 60, top: 80),
+                      padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.12, top: MediaQuery.of(context).size.height*0.08,right: MediaQuery.of(context).size.width*0.07),
                       child: ClipRRect(
                         child: Image.asset("images/add_task.png"),
                       ),
@@ -70,7 +73,7 @@ class _HomeMentorState extends State<HomeMentor> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(left: 50, top: 150),
+                        padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.13, top: MediaQuery.of(context).size.height*0.17),
                         child: LiquidCustomProgressIndicator(
                           value: tasks_done / total_tasks,
                           valueColor: AlwaysStoppedAnimation(Colors.orange),
@@ -80,21 +83,21 @@ class _HomeMentorState extends State<HomeMentor> {
                         ),
                       ),
                       SizedBox(
-                        height: 10,
+                        height: MediaQuery.of(context).size.height*0.01,
                       ),
                       Row(
                         children: [
-                          SizedBox(width: 55, height: 10),
+                          SizedBox(width: MediaQuery.of(context).size.width*0.145, height: MediaQuery.of(context).size.height*0.01),
                           Image.asset("images/tree.png"),
                         ],
                       ),
                       SizedBox(
-                        height: 10,
+                        height: MediaQuery.of(context).size.height*0.01,
                       ),
                       Row(
                         children: [
                           SizedBox(
-                            width: 40,
+                            width: MediaQuery.of(context).size.width*0.11,
                           ),
                           Text(
                             "STAGE 1",
@@ -113,21 +116,21 @@ class _HomeMentorState extends State<HomeMentor> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(
-                        height: 150,
+                        height: MediaQuery.of(context).size.height*0.15,
                       ),
                       Row(
                         children: [
                           SizedBox(
-                            width: 50,
-                            height: 40,
+                            width: MediaQuery.of(context).size.width*0.13,
+                            height: MediaQuery.of(context).size.height*0.04,
                             child: FlatButton(
                                 onPressed: () {
                                   setState(() {
                                     if (color1 == Colors.grey) {
                                       tasks_done += 1;
-                                      color1 = Colors.green;
+                                      color1 = Colors.orange;
                                       text_color1 = Colors.grey.shade400;
-                                    } else if (color1 == Colors.green) {
+                                    } else if (color1 == Colors.orange) {
                                       tasks_done -= 1;
                                       color1 = Colors.grey;
                                       text_color1 = Colors.grey.shade900;
@@ -145,9 +148,9 @@ class _HomeMentorState extends State<HomeMentor> {
                                 setState(() {
                                   if (color1 == Colors.grey) {
                                     tasks_done += 1;
-                                    color1 = Colors.green;
+                                    color1 = Colors.orange;
                                     text_color1 = Colors.grey.shade400;
-                                  } else if (color1 == Colors.green) {
+                                  } else if (color1 == Colors.orange) {
                                     tasks_done -= 1;
                                     color1 = Colors.grey;
                                     text_color1 = Colors.grey.shade900;
@@ -167,16 +170,16 @@ class _HomeMentorState extends State<HomeMentor> {
                       Row(
                         children: [
                           SizedBox(
-                            width: 50,
-                            height: 40,
+                            width: MediaQuery.of(context).size.width*0.13,
+                            height: MediaQuery.of(context).size.height*0.04,
                             child: FlatButton(
                                 onPressed: () {
                                   setState(() {
                                     if (color2 == Colors.grey) {
                                       tasks_done += 1;
-                                      color2 = Colors.green;
+                                      color2 = Colors.orange;
                                       text_color2 = Colors.grey.shade400;
-                                    } else if (color2 == Colors.green) {
+                                    } else if (color2 == Colors.orange) {
                                       tasks_done -= 1;
                                       color2 = Colors.grey;
                                       text_color2 = Colors.grey.shade900;
@@ -194,9 +197,9 @@ class _HomeMentorState extends State<HomeMentor> {
                                 setState(() {
                                   if (color2 == Colors.grey) {
                                     tasks_done += 1;
-                                    color2 = Colors.green;
+                                    color2 = Colors.orange;
                                     text_color2 = Colors.grey.shade400;
-                                  } else if (color2 == Colors.green) {
+                                  } else if (color2 == Colors.orange) {
                                     tasks_done -= 1;
                                     color2 = Colors.grey;
                                     text_color2 = Colors.grey.shade900;
@@ -216,16 +219,16 @@ class _HomeMentorState extends State<HomeMentor> {
                       Row(
                         children: [
                           SizedBox(
-                            width: 50,
-                            height: 40,
+                            width: MediaQuery.of(context).size.width*0.13,
+                            height: MediaQuery.of(context).size.height*0.04,
                             child: FlatButton(
                                 onPressed: () {
                                   setState(() {
                                     if (color3 == Colors.grey) {
                                       tasks_done += 1;
-                                      color3 = Colors.green;
+                                      color3 = Colors.orange;
                                       text_color3 = Colors.grey.shade400;
-                                    } else if (color3 == Colors.green) {
+                                    } else if (color3 == Colors.orange) {
                                       tasks_done -= 1;
                                       color3 = Colors.grey;
                                       text_color3 = Colors.grey.shade900;
@@ -243,9 +246,9 @@ class _HomeMentorState extends State<HomeMentor> {
                                 setState(() {
                                   if (color3 == Colors.grey) {
                                     tasks_done += 1;
-                                    color3 = Colors.green;
+                                    color3 = Colors.orange;
                                     text_color3 = Colors.grey.shade400;
-                                  } else if (color3 == Colors.green) {
+                                  } else if (color3 == Colors.orange) {
                                     tasks_done -= 1;
                                     color3 = Colors.grey;
                                     text_color3 = Colors.grey.shade900;
@@ -265,16 +268,16 @@ class _HomeMentorState extends State<HomeMentor> {
                       Row(
                         children: [
                           SizedBox(
-                            width: 50,
-                            height: 40,
+                            width: MediaQuery.of(context).size.width*0.13,
+                            height: MediaQuery.of(context).size.height*0.04,
                             child: FlatButton(
                                 onPressed: () {
                                   setState(() {
                                     if (color4 == Colors.grey) {
                                       tasks_done += 1;
-                                      color4 = Colors.green;
+                                      color4 = Colors.orange;
                                       text_color4 = Colors.grey.shade400;
-                                    } else if (color4 == Colors.green) {
+                                    } else if (color4 == Colors.orange) {
                                       tasks_done -= 1;
                                       color4 = Colors.grey;
                                       text_color4 = Colors.grey.shade900;
@@ -292,9 +295,9 @@ class _HomeMentorState extends State<HomeMentor> {
                                 setState(() {
                                   if (color4 == Colors.grey) {
                                     tasks_done += 1;
-                                    color4 = Colors.green;
+                                    color4 = Colors.orange;
                                     text_color4 = Colors.grey.shade400;
-                                  } else if (color4 == Colors.green) {
+                                  } else if (color4 == Colors.orange) {
                                     tasks_done -= 1;
                                     color4 = Colors.grey;
                                     text_color4 = Colors.grey.shade900;

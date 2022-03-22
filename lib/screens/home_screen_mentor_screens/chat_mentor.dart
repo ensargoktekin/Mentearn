@@ -144,6 +144,7 @@ class _ChatScreenMentorState extends State<ChatScreenMentor> {
                 children: <Widget>[
                   Expanded(
                     child: TextField(
+                      autocorrect: false,
                       controller: messageTextController,
                       onChanged: (value) {
                         messageText = value;

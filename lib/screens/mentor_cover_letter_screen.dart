@@ -54,10 +54,10 @@ class _MentorCoverState extends State<MentorCover> {
         Column(
           children: [
             SizedBox(
-              height: 70,
+              height: MediaQuery.of(context).size.height*0.1,
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 34),
+              margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.09),
               child: Center(
                   child: Text(
                 "Why Do You Want to Become a Mentor?",
@@ -68,7 +68,7 @@ class _MentorCoverState extends State<MentorCover> {
               )),
             ),
             SizedBox(
-              height: 50,
+              height: MediaQuery.of(context).size.height*0.06,
             ),
             Container(
               height: size.height * 0.3,
@@ -85,10 +85,10 @@ class _MentorCoverState extends State<MentorCover> {
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
               ),
-              padding: EdgeInsets.all(15),
+              padding: EdgeInsets.all(MediaQuery.of(context).size.width*0.04),
             ),
             SizedBox(
-              height: 30,
+              height: MediaQuery.of(context).size.height*0.03,
             ),
             GestureDetector(
               onTap: () async {

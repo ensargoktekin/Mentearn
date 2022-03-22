@@ -53,7 +53,7 @@ class _LoginScreenMenteeState extends State<LoginScreenMentee> {
         backgroundColor: Colors.white,
         leading: IconButton(
             icon: Icon(
-              Icons.backpack,
+              Icons.arrow_back,
               color: Colors.black,
             ),
             onPressed: () {
@@ -70,7 +70,7 @@ class _LoginScreenMenteeState extends State<LoginScreenMentee> {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.0),
+        padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.05),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -85,6 +85,7 @@ class _LoginScreenMenteeState extends State<LoginScreenMentee> {
             ),
             TextField(
               keyboardType: TextInputType.emailAddress,
+              autocorrect: false,
               textAlign: TextAlign.center,
               onChanged: (value) {
                 email = value;
@@ -94,7 +95,7 @@ class _LoginScreenMenteeState extends State<LoginScreenMentee> {
                   kTextFieldDecoration.copyWith(hintText: 'Enter your email'),
             ),
             SizedBox(
-              height: 10.0,
+              height: MediaQuery.of(context).size.height * 0.01,
             ),
             Text(
               " Password",
@@ -106,6 +107,7 @@ class _LoginScreenMenteeState extends State<LoginScreenMentee> {
             ),
             TextField(
               obscureText: true,
+              autocorrect: false,
               textAlign: TextAlign.center,
               onChanged: (value) {
                 password = value;
@@ -115,7 +117,7 @@ class _LoginScreenMenteeState extends State<LoginScreenMentee> {
                   hintText: 'Enter your password'),
             ),
             SizedBox(
-              height: 24.0,
+              height: MediaQuery.of(context).size.height * 0.024,
             ),
             Flexible(
               child: GestureDetector(
@@ -134,11 +136,14 @@ class _LoginScreenMenteeState extends State<LoginScreenMentee> {
                 },
                 child: ClipRRect(
                   child: Image.asset(
-                    'images/Sign_up2.png',
-                    height: 40.0,
+                    'images/sign_in.png',
+                    height: MediaQuery.of(context).size.height * 0.05,
                   ),
                 ),
               ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.01,
             ),
             Center(
               child: Text(
@@ -150,6 +155,7 @@ class _LoginScreenMenteeState extends State<LoginScreenMentee> {
                 ),
               ),
             ),
+
             Flexible(
               child: RoundedRectangleButton(
                 title: 'Google',

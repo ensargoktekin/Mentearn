@@ -141,13 +141,13 @@ class _State extends State<MenteeProfile> {
             ),
           ),
         ),
-        body: Column(
+        body: ListView(
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(right: 20, top: 10),
+                  padding: EdgeInsets.only(right: MediaQuery.of(context).size.width*0.05, top: MediaQuery.of(context).size.height*0.01),
                   child: GestureDetector(
                     onTap: () {
                       print("clicked");
@@ -161,8 +161,10 @@ class _State extends State<MenteeProfile> {
                       });
                     },
                     child: ClipRRect(
-                        child: Text(
-                            'Edit profile') /*Image.asset(
+                        child: SizedBox(
+                            width: MediaQuery.of(context).size.width*0.33,
+                            height: MediaQuery.of(context).size.height*0.06,
+                            child: Image.asset("images/edit.png")) /*Image.asset(
                         'images/edit_profile_mentee.png',
                         height: 20.0,
                       ),*/
@@ -171,18 +173,24 @@ class _State extends State<MenteeProfile> {
                 )
               ],
             ),
-            Text(
-              "WelcomeBack,\n$_menteeName",
-              style: TextStyle(
-                height: 1,
-                fontFamily: "Poppins",
-                fontWeight: FontWeight.bold,
-                letterSpacing: 1,
-                fontSize: 30,
+            SizedBox(
+              height: MediaQuery.of(context).size.height*0.01,
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.06),
+              child: Text(
+                "Welcome Back,\n$_menteeName",
+                style: TextStyle(
+                  height: MediaQuery.of(context).size.height*0.0011,
+                  fontFamily: "Poppins",
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1,
+                  fontSize: 30,
+                ),
               ),
             ),
             SizedBox(
-              height: 25,
+              height: MediaQuery.of(context).size.height*0.01,
             ),
             Row(
               children: [
@@ -190,19 +198,19 @@ class _State extends State<MenteeProfile> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(left: 30),
+                      padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.07),
                       child: CircleAvatar(
-                        radius: 50,
+                        radius: MediaQuery.of(context).size.width*0.13,
                       ),
                     ),
                     SizedBox(
-                      height: 5,
+                      height: MediaQuery.of(context).size.height*0.005,
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: 20),
+                      padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.05),
                       child: Container(
-                        width: 120,
-                        height: 30,
+                        width: MediaQuery.of(context).size.width*0.3,
+                        height: MediaQuery.of(context).size.height*0.04,
                         child: Text("Interests",
                             textAlign: TextAlign.center,
                             style: TextStyle(
@@ -212,10 +220,10 @@ class _State extends State<MenteeProfile> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: 20),
+                      padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.05),
                       child: Container(
-                        width: 120,
-                        height: 30,
+                        width: MediaQuery.of(context).size.width*0.3,
+                        height: MediaQuery.of(context).size.height*0.035,
                         color: Colors.green,
                         child: Text(
                           _menteeInterests,
@@ -230,55 +238,68 @@ class _State extends State<MenteeProfile> {
                   ],
                 ),
                 SizedBox(
-                  width: 30,
+                  width: MediaQuery.of(context).size.width*0.06,
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      _menteeName,
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontFamily: "Poppins",
-                        fontWeight: FontWeight.bold,
+                Container(
+                  margin: EdgeInsets.only(right: MediaQuery.of(context).size.width*0.0025),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width*0.5,
+                        child: Text(
+                          _menteeName,
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontFamily: "Poppins",
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
-                    ),
-                    Text(
-                      _menteeSchool,
-                      style: TextStyle(
-                        fontFamily: "Poppins",
-                        fontSize: 16,
-                        fontWeight: FontWeight.normal,
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width*0.5,
+                        child: Text(
+                          _menteeSchool,
+                          style: TextStyle(
+                            fontFamily: "Poppins",
+                            fontSize: 16,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
                       ),
-                    ),
-                    Text(
-                      _menteeBio,
-                      style: TextStyle(
-                        fontFamily: "Poppins",
-                        fontSize: 16,
-                        fontWeight: FontWeight.normal,
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width*0.5,
+                        child: Text(
+                          _menteeBio,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 50,
+                          style: TextStyle(
+                            fontFamily: "Poppins",
+                            fontSize: 16,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),
             SizedBox(
-              height: 50,
+              height: MediaQuery.of(context).size.height*0.03,
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 30),
+              margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.08),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(50)),
+                  borderRadius: BorderRadius.all(Radius.circular(MediaQuery.of(context).size.width*0.125)),
                   border: Border.all(color: Colors.grey)),
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(
-                          left: 50, right: 50, top: 10, bottom: 10),
+                      padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.12,vertical: MediaQuery.of(context).size.height*0.02),
                       child: Text(
                         "My Mentor",
                         textAlign: TextAlign.center,
@@ -289,7 +310,7 @@ class _State extends State<MenteeProfile> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(15.0),
+                      padding: EdgeInsets.all(MediaQuery.of(context).size.width*0.04),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -330,8 +351,8 @@ class _State extends State<MenteeProfile> {
                             ),
                           ),
                           Container(
-                            width: 200,
-                            height: 40,
+                            width: MediaQuery.of(context).size.width*0.5,
+                            height: MediaQuery.of(context).size.height*0.05,
                             decoration: BoxDecoration(
                                 color: Colors.green,
                                 border: Border.all(
@@ -339,7 +360,7 @@ class _State extends State<MenteeProfile> {
                                 ),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20))),
-                            padding: EdgeInsets.all(8),
+                            padding: EdgeInsets.all(MediaQuery.of(context).size.width*0.02),
                             child: Text(
                               "SAPLING",
                               textAlign: TextAlign.center,
@@ -351,7 +372,7 @@ class _State extends State<MenteeProfile> {
                             ),
                           ),
                           SizedBox(
-                            height: 20,
+                            height: MediaQuery.of(context).size.height*0.02,
                           )
                         ],
                       ),

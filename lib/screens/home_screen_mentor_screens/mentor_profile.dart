@@ -145,217 +145,246 @@ class _State extends State<MentorProfile> {
             ),
           ),
         ),
-        body: Column(
+        body: ListView(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: EdgeInsets.only(right: 20, top: 10),
-                  child: GestureDetector(
-                      onTap: () {
-                        print("clicked");
-                        setState(() {
-                          menteeInfos();
-                          print(_mentee);
-                          Future.delayed(const Duration(seconds: 1), () {
-                            mentorInfos();
-                            print('delayed execution');
-                          });
-                        });
-                      },
-                      child: ClipRRect(
-                        child: Text('Edit Profile'),
-                      )),
-                )
-              ],
-            ),
-            Text(
-              "WelcomeBack,\n$_mentorName",
-              style: TextStyle(
-                height: 1,
-                fontFamily: "Poppins",
-                fontWeight: FontWeight.bold,
-                letterSpacing: 1,
-                fontSize: 30,
-              ),
-            ),
-            SizedBox(
-              height: 25,
-            ),
-            Row(
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(left: 30),
-                      child: CircleAvatar(
-                        radius: 50,
+                      padding: EdgeInsets.only(right: MediaQuery.of(context).size.width*0.05, top: MediaQuery.of(context).size.height*0.01),
+                      child: GestureDetector(
+                          onTap: () {
+                            print("clicked");
+                            setState(() {
+                              menteeInfos();
+                              print(_mentee);
+                              Future.delayed(const Duration(seconds: 1), () {
+                                mentorInfos();
+                                print('delayed execution');
+                              });
+                            });
+                          },
+                          child: ClipRRect(
+                            child: SizedBox(
+                              height: MediaQuery.of(context).size.height*0.06,
+                              width: MediaQuery.of(context).size.width*0.33,
+                              child: Image.asset("images/edit2.png"),
+                            ),
+                          )
                       ),
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 20),
-                      child: Container(
-                        width: 120,
-                        height: 30,
-                        child: Text("Interests",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: "Poppins")),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 20),
-                      child: Container(
-                        width: 120,
-                        height: 30,
-                        color: Colors.green,
-                        child: Text(
-                          _mentorInterests,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontFamily: "Poppins",
-                            fontSize: 16,
-                          ),
-                        ),
-                      ),
-                    ),
+                    )
                   ],
                 ),
                 SizedBox(
-                  width: 30,
+                  height: MediaQuery.of(context).size.height*0.01,
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      _mentorName,
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontFamily: "Poppins",
-                        fontWeight: FontWeight.bold,
-                      ),
+                Padding(
+                  padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.06),
+                  child: Text(
+                    "Welcome Back,\n$_mentorName",
+                    style: TextStyle(
+                      height: MediaQuery.of(context).size.height*0.0011,
+                      fontFamily: "Poppins",
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 1,
+                      fontSize: 30,
                     ),
-                    Text(
-                      _mentorSchool,
-                      style: TextStyle(
-                        fontFamily: "Poppins",
-                        fontSize: 16,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                    Text(
-                      _mentorBio,
-                      style: TextStyle(
-                        fontFamily: "Poppins",
-                        fontSize: 16,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                  ],
+                    textAlign: TextAlign.start,
+                  ),
                 ),
-              ],
-            ),
-            SizedBox(
-              height: 50,
-            ),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 30),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(50)),
-                  border: Border.all(color: Colors.grey)),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                SizedBox(
+                  height: MediaQuery.of(context).size.height*0.01,
+                ),
+                Row(
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(
-                          left: 50, right: 50, top: 10, bottom: 0),
-                      child: Text(
-                        "My Mentee",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontFamily: "Poppins",
-                            fontSize: 20,
-                            fontWeight: FontWeight.normal),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(13.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          CircleAvatar(
-                            radius: 50,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.07),
+                          child: CircleAvatar(
+                            radius: MediaQuery.of(context).size.width*0.13,
                           ),
-                          Text(
-                            _menteeName,
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontFamily: "Poppins",
-                              fontWeight: FontWeight.bold,
-                            ),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height*0.005,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 20),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width*0.3,
+                            height: MediaQuery.of(context).size.height*0.04,
+                            child: Text("Interests",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: "Poppins")),
                           ),
-                          Text(
-                            _menteeSchool,
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontFamily: "Poppins",
-                              fontWeight: FontWeight.normal,
-                            ),
-                          ),
-                          Text(
-                            _menteeBio,
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontFamily: "Poppins",
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            "Stage 1",
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 14,
-                              fontFamily: "Poppins",
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Container(
-                            width: 200,
-                            height: 40,
-                            decoration: BoxDecoration(
-                                color: Colors.green,
-                                border: Border.all(
-                                  color: Colors.green.shade900,
-                                ),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20))),
-                            padding: EdgeInsets.all(8),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 20),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width*0.3,
+                            height: MediaQuery.of(context).size.height*0.04,
+                            color: Colors.orange,
                             child: Text(
-                              "SAPLING",
+                              _mentorInterests,
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: 14,
+                                fontFamily: "Poppins",
+                                fontSize: 16,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width*0.06,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(right: MediaQuery.of(context).size.width*0.0025),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width*0.5,
+                            child: Text(
+                              _mentorName,
+                              style: TextStyle(
+                                fontSize: 18,
                                 fontFamily: "Poppins",
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
                           SizedBox(
-                            height: 20,
-                          )
+                            width: MediaQuery.of(context).size.width*0.5,
+                            child: Text(
+                              _mentorSchool,
+                              style: TextStyle(
+                                fontFamily: "Poppins",
+                                fontSize: 16,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width*0.5,
+                            child: Text(
+                              _mentorBio,
+                              style: TextStyle(
+                                fontFamily: "Poppins",
+                                fontSize: 16,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
                         ],
                       ),
-                    )
-                  ]),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height*0.03,
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.08),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(MediaQuery.of(context).size.width*0.125)),
+                      border: Border.all(color: Colors.grey)),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.12,vertical: MediaQuery.of(context).size.height*0.02),
+                          child: Text(
+                            "My Mentee",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: "Poppins",
+                                fontSize: 20,
+                                fontWeight: FontWeight.normal),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(MediaQuery.of(context).size.width*0.04),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              CircleAvatar(
+                                radius: 50,
+                              ),
+                              Text(
+                                _menteeName,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontFamily: "Poppins",
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                _menteeSchool,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontFamily: "Poppins",
+                                  fontWeight: FontWeight.normal,
+                                ),
+                              ),
+                              Text(
+                                _menteeBio,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontFamily: "Poppins",
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                "Stage 1",
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 14,
+                                  fontFamily: "Poppins",
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Container(
+                                width: MediaQuery.of(context).size.width*0.5,
+                                height: MediaQuery.of(context).size.height*0.05,
+                                decoration: BoxDecoration(
+                                    color: Colors.green,
+                                    border: Border.all(
+                                      color: Colors.green.shade900,
+                                    ),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20))),
+                                padding: EdgeInsets.all(MediaQuery.of(context).size.width*0.02),
+                                child: Text(
+                                  "SAPLING",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontFamily: "Poppins",
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: MediaQuery.of(context).size.height*0.02,
+                              )
+                            ],
+                          ),
+                        )
+                      ]),
+                ),
+              ],
             ),
           ],
         ),
