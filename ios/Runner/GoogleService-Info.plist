@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>993366918465-pi1ssorv1so0gg34nq0f6kq4c4tlrlnt.apps.googleusercontent.com</string>
+	<string>826308309591-hcki61dqtgubt63n23uv5c88i9fol3oo.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.993366918465-pi1ssorv1so0gg34nq0f6kq4c4tlrlnt</string>
+	<string>com.googleusercontent.apps.826308309591-hcki61dqtgubt63n23uv5c88i9fol3oo</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDBHBz7O2tSoU_1ysjgC_0-_ObBB6UEOus</string>
+	<string>AIzaSyDs-6SmVq14EPSCrN-fJGfFquylnwO7nxo</string>
 	<key>GCM_SENDER_ID</key>
-	<string>993366918465</string>
+	<string>826308309591</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.iforwe.mentearn</string>
 	<key>PROJECT_ID</key>
-	<string>mentearn</string>
+	<string>mentearn-82b29</string>
 	<key>STORAGE_BUCKET</key>
-	<string>mentearn.appspot.com</string>
+	<string>mentearn-82b29.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:993366918465:ios:412281d1a75c8cb8cc0dc0</string>
+	<string>1:826308309591:ios:1e28464e23eb7dd8336912</string>
 </dict>
 </plist>

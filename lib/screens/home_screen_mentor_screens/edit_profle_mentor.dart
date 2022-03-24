@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
-import 'whitescreen.dart';
-import 'mentee_cover_letter_screen.dart';
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:image_picker/image_picker.dart';
@@ -11,19 +9,19 @@ import 'package:image_picker/image_picker.dart';
 final _firestore = FirebaseFirestore.instance;
 late User loggedInUser;
 final CollectionReference collectionUser =
-    FirebaseFirestore.instance.collection('mentees');
+    FirebaseFirestore.instance.collection('mentors');
 
-class MenteeInfo extends StatefulWidget {
-  static const String id = 'menteeInfo';
+class EditProfileMentor extends StatefulWidget {
+  static const String id = 'editProfileMentor';
 
   @override
-  State<MenteeInfo> createState() => _MenteeInfoState();
+  State<EditProfileMentor> createState() => _EditProfileMentorState();
 }
 
-class _MenteeInfoState extends State<MenteeInfo> {
+class _EditProfileMentorState extends State<EditProfileMentor> {
   final _auth = FirebaseAuth.instance;
   late String fullname;
-  late String school;
+  late String position;
   late String birthdate;
   late String interests;
   late String bio;
@@ -50,7 +48,7 @@ class _MenteeInfoState extends State<MenteeInfo> {
     }
   }
 
-  _selectDate(BuildContext context) async {
+  /*_selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: selectedDate,
@@ -64,7 +62,7 @@ class _MenteeInfoState extends State<MenteeInfo> {
         birthdate = textControllerDate.text;
       });
     }
-  }
+  }*/
 
   File? _photo;
 
@@ -72,6 +70,17 @@ class _MenteeInfoState extends State<MenteeInfo> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.orange,
+          leading: IconButton(
+              icon: Icon(
+                Icons.arrow_back,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              }),
+        ),
         backgroundColor: Colors.white,
         body: Row(crossAxisAlignment: CrossAxisAlignment.stretch, children: <
             Widget>[
@@ -84,14 +93,16 @@ class _MenteeInfoState extends State<MenteeInfo> {
                   Padding(
                     padding: EdgeInsets.only(
                         top: MediaQuery.of(context).size.height * 0.08),
-                    child: Text(
-                      'Create Your Profile',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        height: 1,
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Poppins',
+                    child: Center(
+                      child: Text(
+                        'Edit Your Profile',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          height: 1,
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Poppins',
+                        ),
                       ),
                     ),
                   ),
@@ -175,7 +186,7 @@ class _MenteeInfoState extends State<MenteeInfo> {
                   Row(
                     children: [
                       SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.03,
+                        width: MediaQuery.of(context).size.width * 0.08,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -189,7 +200,7 @@ class _MenteeInfoState extends State<MenteeInfo> {
                             ),
                           ),
                           SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.3,
+                            width: MediaQuery.of(context).size.width * 0.4,
                             height: MediaQuery.of(context).size.height * 0.035,
                             child: TextField(
                               autocorrect: false,
@@ -234,14 +245,14 @@ class _MenteeInfoState extends State<MenteeInfo> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Education',
+                            'Position',
                             style: TextStyle(
                               fontSize: 16,
                               fontFamily: 'Poppins',
                             ),
                           ),
                           SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.32,
+                            width: MediaQuery.of(context).size.width * 0.4,
                             height: MediaQuery.of(context).size.height * 0.035,
                             child: TextField(
                               autocorrect: false,
@@ -251,10 +262,10 @@ class _MenteeInfoState extends State<MenteeInfo> {
                               textAlign: TextAlign.start,
                               keyboardType: TextInputType.name,
                               onChanged: (value) {
-                                school = value;
+                                position = value;
                               },
                               decoration: InputDecoration(
-                                hintText: 'School/Department',
+                                hintText: 'Your Position',
                                 contentPadding: EdgeInsets.symmetric(
                                     vertical: 1.0, horizontal: 5.0),
                                 border: OutlineInputBorder(
@@ -289,7 +300,7 @@ class _MenteeInfoState extends State<MenteeInfo> {
                         left: MediaQuery.of(context).size.width * 0.025),
                     child: Row(
                       children: [
-                        Column(
+                        /*Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
@@ -301,14 +312,13 @@ class _MenteeInfoState extends State<MenteeInfo> {
                                 ),
                               ),
                               SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.035,
-                                width: MediaQuery.of(context).size.width * 0.3,
+                                height: MediaQuery.of(context).size.height*0.035,
+                                width: MediaQuery.of(context).size.width*0.3,
                                 child: TextField(
                                   autocorrect: false,
                                   controller: textControllerDate,
                                   textCapitalization:
-                                      TextCapitalization.characters,
+                                  TextCapitalization.characters,
                                   onTap: () => _selectDate(context),
                                   readOnly: true,
                                   style: TextStyle(
@@ -338,9 +348,9 @@ class _MenteeInfoState extends State<MenteeInfo> {
                                   ),
                                 ),
                               ),
-                            ]),
+                            ]),*/
                         SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.04,
+                          width: MediaQuery.of(context).size.width * 0.06,
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -353,7 +363,7 @@ class _MenteeInfoState extends State<MenteeInfo> {
                               ),
                             ),
                             SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.33,
+                              width: MediaQuery.of(context).size.width * 0.4,
                               height:
                                   MediaQuery.of(context).size.height * 0.035,
                               child: TextField(
@@ -400,7 +410,7 @@ class _MenteeInfoState extends State<MenteeInfo> {
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width * 0.025),
+                        left: MediaQuery.of(context).size.width * 0.09),
                     child: Text(
                       'Bio',
                       textAlign: TextAlign.start,
@@ -412,9 +422,9 @@ class _MenteeInfoState extends State<MenteeInfo> {
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width * 0.025),
+                        left: MediaQuery.of(context).size.width * 0.09),
                     child: SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.5,
+                      width: MediaQuery.of(context).size.width * 0.8,
                       height: MediaQuery.of(context).size.height * 0.2,
                       child: TextField(
                         autocorrect: false,
@@ -462,17 +472,16 @@ class _MenteeInfoState extends State<MenteeInfo> {
                       Expanded(
                         child: GestureDetector(
                           onTap: () async {
-                            loggedInUser.updateDisplayName("mentee");
                             await collectionUser
                                 .doc(loggedInUser.email.toString())
                                 .update({
                               'fullname': fullname,
-                              'school': school,
-                              'birthdate': birthdate,
+                              'profession': position,
+                              /*'birthdate': birthdate,*/
                               'interests': interests,
-                              'bio': bio,
+                              'bio': bio
                             });
-                            Navigator.pushNamed(context, MenteeCover.id);
+                            Navigator.pop(context);
                           },
                           child: ClipRRect(
                             child: Icon(
@@ -489,11 +498,11 @@ class _MenteeInfoState extends State<MenteeInfo> {
               ),
             ),
           ),
-          Expanded(
+          /*Expanded(
               child: Image(
-            fit: BoxFit.cover,
-            image: AssetImage('images/mentee_side.png'),
-          ))
+                fit: BoxFit.cover,
+                image: AssetImage('images/mentee_side.png'),
+              ))*/
         ]),
       ),
     );

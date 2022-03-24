@@ -108,7 +108,7 @@ class _ChatScreenMentorState extends State<ChatScreenMentor> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: null,
+        /*leading: null,
         actions: <Widget>[
           IconButton(
               icon: Icon(Icons.close),
@@ -118,7 +118,7 @@ class _ChatScreenMentorState extends State<ChatScreenMentor> {
                 Navigator.pop(context);
                 //Implement logout functionality
               }),
-        ],
+        ],*/
         title: Center(
           child: Text(
             'Your Mentee: $_menteeName',

@@ -76,14 +76,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             ),
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height*0.05,
+            height: MediaQuery.of(context).size.height * 0.02,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                width: MediaQuery.of(context).size.width*0.45,
+                width: MediaQuery.of(context).size.width * 0.45,
                 child: GestureDetector(
                     onTap: () {
                       setState(() {
@@ -92,9 +92,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     },
                     child: ClipRRect(child: menteeImage)),
               ),
-              SizedBox(width: MediaQuery.of(context).size.width*0.025),
+              SizedBox(width: MediaQuery.of(context).size.width * 0.025),
               SizedBox(
-                width: MediaQuery.of(context).size.width*0.45,
+                width: MediaQuery.of(context).size.width * 0.45,
                 child: GestureDetector(
                     onTap: () {
                       setState(() {
@@ -106,7 +106,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             ],
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height*0.02,
+            height: MediaQuery.of(context).size.height * 0.01,
           ),
           Text(
             "Already a member? ",

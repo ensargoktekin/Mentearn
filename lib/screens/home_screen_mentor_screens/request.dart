@@ -93,7 +93,7 @@ class _RequestPageState extends State<RequestPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: null,
+        /*leading: null,
         actions: <Widget>[
           IconButton(
               icon: Icon(Icons.close),
@@ -103,7 +103,7 @@ class _RequestPageState extends State<RequestPage> {
                 Navigator.pop(context);
                 //Implement logout functionality
               }),
-        ],
+        ],*/
         backgroundColor: Colors.orange,
         title: Center(
           child: Text(
@@ -117,12 +117,12 @@ class _RequestPageState extends State<RequestPage> {
         ),
       ),
       body: ListView(
-          //crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            /*SizedBox(
+        //crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          /*SizedBox(
               height: 50,
             ),*/
-            /*Container(
+          /*Container(
                 margin: EdgeInsets.only(
                     left: MediaQuery.of(context).size.width * 0.1),
                 child: Text(
@@ -132,88 +132,95 @@ class _RequestPageState extends State<RequestPage> {
             SizedBox(
               height: 30,
             ),*/
-            Center(
-              child: Container(
-                margin: EdgeInsets.symmetric(vertical: 30),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(7)),
-                    border: Border.all(color: Colors.orange)),
-                //height: MediaQuery.of(context).size.height * 0.40,
-                width: MediaQuery.of(context).size.width * 0.8,
-                child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height*0.013,
-                      ),
-                      CircleAvatar(
-                        radius: MediaQuery.of(context).size.width*0.08,
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height*0.005,
-                      ),
-                      Text(
-                        _menteeName,
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height*0.003,
-                      ),
-                      Text(_menteeSchool,
-                          style: TextStyle(fontSize: 12, color: Color(0xFF585C60))),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height*0.002,
-                      ),
-                      Text(_menteeBio,
-                          style: TextStyle(fontSize: 12, color: Color(0xFF585C60))),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height*0.002,
-                      ),
-                      Text(
-                        "Cover letter: $_coverLetter",
-                        style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height*0.03,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Container(
-                              height: MediaQuery.of(context).size.height*0.03,
-                              child: OutlinedButton(
-                                child: Text(
-                                  '      Accept      ',
-                                  style: TextStyle(color: Colors.deepOrangeAccent),
-                                ),
-                                style: OutlinedButton.styleFrom(
-                                  onSurface: Color(0xFF497a48),
-                                  primary: Color(0xFF497a48),
-                                  backgroundColor: Colors.white,
-                                  side: BorderSide(
-                                      color: Colors.deepOrangeAccent, width: 2),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(15)),
-                                ),
-                                onPressed: () async {
-                                  setState(() {
-                                    statusColor = Colors.green;
-                                    status = "accepted";
-                                  });
-                                  await collectionUser2.doc(_menteeRequest).update({
-                                    "mentor": "${loggedInUser.email}",
-                                  });
-                                  await collectionUser
-                                      .doc(loggedInUser.email)
-                                      .update({
-                                    "request": "",
-                                    "mentee": "$_menteeRequest",
-                                    "coverLetter": ""
-                                  });
-                                },
-                              ) /*OutlinedButton(,
+          Center(
+            child: Container(
+              margin: EdgeInsets.symmetric(vertical: 30),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(7)),
+                  border: Border.all(color: Colors.orange)),
+              //height: MediaQuery.of(context).size.height * 0.40,
+              width: MediaQuery.of(context).size.width * 0.8,
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.013,
+                    ),
+                    CircleAvatar(
+                      radius: MediaQuery.of(context).size.width * 0.08,
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.005,
+                    ),
+                    Text(
+                      _menteeName,
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w800),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.003,
+                    ),
+                    Text(_menteeSchool,
+                        style:
+                            TextStyle(fontSize: 12, color: Color(0xFF585C60))),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.002,
+                    ),
+                    Text(_menteeBio,
+                        style:
+                            TextStyle(fontSize: 12, color: Color(0xFF585C60))),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.002,
+                    ),
+                    Text(
+                      "Cover letter: $_coverLetter",
+                      style:
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.03,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Container(
+                            height: MediaQuery.of(context).size.height * 0.03,
+                            child: OutlinedButton(
+                              child: Text(
+                                '      Accept      ',
+                                style:
+                                    TextStyle(color: Colors.deepOrangeAccent),
+                              ),
+                              style: OutlinedButton.styleFrom(
+                                onSurface: Color(0xFF497a48),
+                                primary: Color(0xFF497a48),
+                                backgroundColor: Colors.white,
+                                side: BorderSide(
+                                    color: Colors.deepOrangeAccent, width: 2),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15)),
+                              ),
+                              onPressed: () async {
+                                setState(() {
+                                  statusColor = Colors.green;
+                                  status = "accepted";
+                                });
+                                await collectionUser2
+                                    .doc(_menteeRequest)
+                                    .update({
+                                  "mentor": "${loggedInUser.email}",
+                                });
+                                await collectionUser
+                                    .doc(loggedInUser.email)
+                                    .update({
+                                  "request": "",
+                                  "mentee": "$_menteeRequest",
+                                  "coverLetter": ""
+                                });
+                              },
+                            ) /*OutlinedButton(,
                               child: Text("Outline Button", style: TextStyle(fontSize: 10.0),),
                               highlightedBorderColor: Colors.red,
                               disabledTextColor: Colors.red,
@@ -228,37 +235,37 @@ class _RequestPageState extends State<RequestPage> {
                               splashColor: Colors.red,
                               onPressed: () {},
                             ),*/
+                            ),
+                        Container(
+                            height: MediaQuery.of(context).size.height * 0.03,
+                            child: OutlinedButton(
+                              child: Text('      Reject      ',
+                                  style: TextStyle(
+                                    color: Colors.deepOrangeAccent,
+                                  )),
+                              style: OutlinedButton.styleFrom(
+                                onSurface: Color(0xFF497a48),
+                                primary: Color(0xFF497a48),
+                                backgroundColor: Colors.white,
+                                side: BorderSide(
+                                    color: Colors.deepOrangeAccent, width: 2),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15)),
                               ),
-                          Container(
-                              height: MediaQuery.of(context).size.height*0.03,
-                              child: OutlinedButton(
-                                child: Text('      Reject      ',
-                                    style: TextStyle(
-                                      color: Colors.deepOrangeAccent,
-                                    )),
-                                style: OutlinedButton.styleFrom(
-                                  onSurface: Color(0xFF497a48),
-                                  primary: Color(0xFF497a48),
-                                  backgroundColor: Colors.white,
-                                  side: BorderSide(
-                                      color: Colors.deepOrangeAccent, width: 2),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(15)),
-                                ),
-                                onPressed: () async {
-                                  setState(() {
-                                    status = "rejected";
-                                    statusColor = Colors.red;
-                                  });
-                                  await collectionUser
-                                      .doc(loggedInUser.email)
-                                      .update({
-                                    "request": "",
-                                    "mentee": "",
-                                    "coverLetter": ""
-                                  });
-                                },
-                              ) /*OutlinedButton(,
+                              onPressed: () async {
+                                setState(() {
+                                  status = "rejected";
+                                  statusColor = Colors.red;
+                                });
+                                await collectionUser
+                                    .doc(loggedInUser.email)
+                                    .update({
+                                  "request": "",
+                                  "mentee": "",
+                                  "coverLetter": ""
+                                });
+                              },
+                            ) /*OutlinedButton(,
                               child: Text("Outline Button", style: TextStyle(fontSize: 10.0),),
                               highlightedBorderColor: Colors.red,
                               disabledTextColor: Colors.red,
@@ -273,26 +280,26 @@ class _RequestPageState extends State<RequestPage> {
                               splashColor: Colors.red,
                               onPressed: () {},
                             ),*/
-                              ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height*0.01,
-                      ),
-                      Text(
-                        status,
-                        style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
-                            color: statusColor),
-                      ),
-                    ],
-                  ),
+                            ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.01,
+                    ),
+                    Text(
+                      status,
+                      style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          color: statusColor),
+                    ),
+                  ],
                 ),
               ),
             ),
-          ],
-        ),
-      );
+          ),
+        ],
+      ),
+    );
   }
 }

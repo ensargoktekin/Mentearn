@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -21,22 +22,27 @@ import 'package:mentearn/google_meet/calendar_client.dart';
 import 'package:mentearn/google_meet/secrets.dart';
 import 'package:mentearn/screens/google_meet_screens/create_screen.dart';
 import 'package:mentearn/screens/google_meet_screens/edit_screen.dart';
+import 'package:mentearn/screens/home_screen_mentie_screens/discover.dart';
+import 'package:mentearn/screens/home_screen_mentie_screens/edit_profle_mentee.dart';
+import 'package:mentearn/screens/home_screen_mentor_screens/edit_profle_mentor.dart';
+import 'package:mentearn/screens/home_screen_mentor_screens/add_tasks.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  var _clientID = new ClientId(Secret.getId(), "");
+  /*var _clientID = new ClientId(Secret.getId(), "");
   const _scopes = [cal.CalendarApi.calendarScope];
   await clientViaUserConsent(_clientID, _scopes, prompt)
       .then((AuthClient client) async {
     CalendarClient.calendar = cal.CalendarApi(client);
-  });
+  });*/
 
   runApp(Mentearn());
 }
 
 void prompt(String url) async {
+  print(url);
   if (await canLaunch(url)) {
     await launch(url);
   } else {
@@ -44,12 +50,58 @@ void prompt(String url) async {
   }
 }
 
-class Mentearn extends StatelessWidget {
+class Mentearn extends StatefulWidget {
+  @override
+  State<Mentearn> createState() => _MentearnState();
+}
+
+class _MentearnState extends State<Mentearn> {
+  String initPage = WelcomeScreen.id;
+
+  final FirebaseAuth auth = FirebaseAuth.instance;
+
+  late User currentUser;
+
+  late String role;
+
+  @override
+  void initState() {
+    super.initState();
+    print("here, $initPage");
+    try {
+      print("here1, $initPage");
+      currentUser = auth.currentUser!;
+      if (currentUser != null) {
+        print("here2, $initPage");
+        print(currentUser.displayName);
+        if (currentUser.displayName == "mentee") {
+          print("here21, $initPage");
+          initPage = HomeScreenMentee.id;
+        }
+        if (currentUser.displayName == "mentor") {
+          print("here22, $initPage");
+          initPage = HomeScreenMentor.id;
+        }
+
+        /*
+      here id is static variable which declare as a page name.
+       */
+      } else {
+        print("here3, $initPage");
+        initPage = WelcomeScreen.id;
+      }
+    } catch (e) {
+      print("here4, $initPage");
+      print(e);
+      initPage = WelcomeScreen.id;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: WelcomeScreen.id,
+      initialRoute: initPage,
       routes: {
         WelcomeScreen.id: (context) => WelcomeScreen(),
         RegistrationScreenMentor.id: (context) => RegistrationScreenMentor(),
@@ -66,6 +118,10 @@ class Mentearn extends StatelessWidget {
         MentorInfo.id: (context) => MentorInfo(),
         Apply.id: (context) => Apply(),
         CreateScreen.id: (context) => CreateScreen(),
+        DiscoverStream.id: (context) => DiscoverStream(),
+        EditProfileMentee.id: (context) => EditProfileMentee(),
+        EditProfileMentor.id: (context) => EditProfileMentor(),
+        AddTasks.id: (context) => AddTasks(),
         //EditScreen.id: (context) => EditScreen(event: context,),
 
         //ChatScreen.id: (context) => ChatScreen(),

@@ -1,76 +1,48 @@
 {
   "project_info": {
-    "project_number": "993366918465",
-    "project_id": "mentearn",
-    "storage_bucket": "mentearn.appspot.com"
+    "project_number": "826308309591",
+    "project_id": "mentearn-82b29",
+    "storage_bucket": "mentearn-82b29.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:993366918465:android:6d81ea9ab3676a25cc0dc0",
-        "android_client_info": {
-          "package_name": "com.example.untitled"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "993366918465-73tjng8973njh6dqt43033h0l2t6ph20.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyChXw-GzttHHN2RsTHsdtd_aIElhYIhSBM"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "993366918465-73tjng8973njh6dqt43033h0l2t6ph20.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "993366918465-05suuh1hr5me81mkq2a891d0equb2h1p.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.untitled"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:993366918465:android:ff7e02248ddc90bccc0dc0",
+        "mobilesdk_app_id": "1:826308309591:android:9ca65bb6db46acbf336912",
         "android_client_info": {
           "package_name": "com.iforwe.mentearn"
         }
       },
       "oauth_client": [
         {
-          "client_id": "993366918465-73tjng8973njh6dqt43033h0l2t6ph20.apps.googleusercontent.com",
+          "client_id": "826308309591-h0gcsrpvo1r34dkapqmvnjvha0ogob9t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.iforwe.mentearn",
+            "certificate_hash": "ba0aac25547d0b53a8f886ceae50133f2e277d71"
+          }
+        },
+        {
+          "client_id": "826308309591-vop7hjm6bj11b60qvr4on3t6am3p0ie8.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyChXw-GzttHHN2RsTHsdtd_aIElhYIhSBM"
+          "current_key": "AIzaSyBJIw7sQPigBT_ybQTHZPfPck26wI1f0uw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "993366918465-73tjng8973njh6dqt43033h0l2t6ph20.apps.googleusercontent.com",
+              "client_id": "826308309591-vop7hjm6bj11b60qvr4on3t6am3p0ie8.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "993366918465-05suuh1hr5me81mkq2a891d0equb2h1p.apps.googleusercontent.com",
+              "client_id": "826308309591-hcki61dqtgubt63n23uv5c88i9fol3oo.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.untitled"
+                "bundle_id": "com.iforwe.mentearn"
               }
             }
           ]

@@ -10,19 +10,121 @@ final CollectionReference collectionUser =
 final CollectionReference collectionUser2 =
     FirebaseFirestore.instance.collection('mentees');
 late User loggedInUser;
+final _auth = FirebaseAuth.instance;
+String area = "";
+
+class Interests extends StatefulWidget {
+  @override
+  _InterestsState createState() => _InterestsState();
+}
+
+class _InterestsState extends State<Interests> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        /*leading: null,
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.close),
+              onPressed: () {
+                //messagesStream();
+                _auth.signOut();
+                Navigator.pop(context);
+                //Implement logout functionality
+              }),
+        ],*/
+        backgroundColor: Colors.green,
+        title: Center(
+          child: Text(
+            'Area of Interests',
+            style: TextStyle(
+              fontSize: 15,
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
+      body: ListView(
+        scrollDirection: Axis.vertical,
+        shrinkWrap: true,
+        //reverse: true,
+        padding: EdgeInsets.symmetric(
+            horizontal: MediaQuery.of(context).size.width * 0.025,
+            vertical: MediaQuery.of(context).size.height * 0.02),
+        children: [
+          MentorAreaButton(
+              title: "Flutter",
+              color: Colors.green,
+              onPressed: () {
+                area = "Flutter";
+                Navigator.pushNamed(context, DiscoverStream.id);
+              }),
+          MentorAreaButton(
+              title: "Firebase",
+              color: Colors.green,
+              onPressed: () {
+                area = "Firebase";
+                Navigator.pushNamed(context, DiscoverStream.id);
+              }),
+        ],
+      ),
+    );
+  }
+}
+
+class MentorAreaButton extends StatelessWidget {
+  MentorAreaButton(
+      {required this.title, required this.color, required this.onPressed});
+
+  final Color color;
+  final String title;
+  final void Function() onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+          vertical: MediaQuery.of(context).size.height * 0.005),
+      child: Material(
+        elevation: 8.0,
+        color: color,
+        borderRadius:
+            BorderRadius.circular(MediaQuery.of(context).size.width * 0.02),
+        child: MaterialButton(
+          onPressed: onPressed,
+          minWidth: 200.0,
+          height: MediaQuery.of(context).size.height * 0.05,
+          child: Text(
+            title,
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: "Poppins",
+              fontSize: 17.0,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
 
 class DiscoverStream extends StatefulWidget {
+  static const String id = 'discover_screen_Mentee';
+
   @override
   State<DiscoverStream> createState() => _DiscoverStreamState();
 }
 
 class _DiscoverStreamState extends State<DiscoverStream> {
-  final _auth = FirebaseAuth.instance;
   late String department;
   late String email;
   late String fullname;
   late String position;
   late String bio;
+  late String mentee;
+  late String interest;
 
   @override
   void initState() {
@@ -47,7 +149,7 @@ class _DiscoverStreamState extends State<DiscoverStream> {
     return Scaffold(
       appBar: AppBar(
         leading: null,
-        actions: <Widget>[
+        /*actions: <Widget>[
           IconButton(
               icon: Icon(Icons.close),
               onPressed: () {
@@ -56,7 +158,7 @@ class _DiscoverStreamState extends State<DiscoverStream> {
                 Navigator.pop(context);
                 //Implement logout functionality
               }),
-        ],
+        ],*/
         backgroundColor: Colors.green,
         title: Center(
           child: Text(
@@ -105,22 +207,26 @@ class _DiscoverStreamState extends State<DiscoverStream> {
                   });*/
 
                   for (var mentor in mentors as Iterable) {
-                    department = mentor.data()['profession'];
+                    department = mentor.data()['interests'];
                     email = mentor.data()['email'];
                     fullname = mentor.data()['fullname'];
                     position = mentor.data()['profession'];
                     bio = mentor.data()['bio'];
+                    mentee = mentor.data()['mentee'];
+                    interest = mentor.data()['interests'];
                     /*final messageText = mentor.data()['text'];
                 final messageSender = mentor.data()['sender'];*/
 
-                    final mentorBox = Discover(
-                      department: department,
-                      email: email,
-                      fullname: fullname,
-                      position: position,
-                      bio: bio,
-                    );
-                    mentorBoxes.add(mentorBox);
+                    if (area == interest && mentee == "") {
+                      final mentorBox = Discover(
+                        department: department,
+                        email: email,
+                        fullname: fullname,
+                        position: position,
+                        bio: bio,
+                      );
+                      mentorBoxes.add(mentorBox);
+                    }
                   }
                   //print(mentorBoxes.length);
                   return ListView(
@@ -128,7 +234,8 @@ class _DiscoverStreamState extends State<DiscoverStream> {
                     shrinkWrap: true,
                     //reverse: true,
                     padding: EdgeInsets.symmetric(
-                        horizontal: MediaQuery.of(context).size.width*0.025, vertical: MediaQuery.of(context).size.height*0.02),
+                        horizontal: MediaQuery.of(context).size.width * 0.025,
+                        vertical: MediaQuery.of(context).size.height * 0.02),
                     children: mentorBoxes,
                   );
                 },
@@ -178,9 +285,10 @@ class _DiscoverState extends State<Discover> {
       ),
     );*/
         Padding(
-      padding: EdgeInsets.all(MediaQuery.of(context).size.width*0.025),
+      padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.025),
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal:MediaQuery.of(context).size.width*0.025),
+        margin: EdgeInsets.symmetric(
+            horizontal: MediaQuery.of(context).size.width * 0.025),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(7)),
             border: Border.all(color: Colors.grey)),
@@ -217,36 +325,39 @@ class _DiscoverState extends State<Discover> {
               radius: 30,
             ),*/
             SizedBox(
-              height: MediaQuery.of(context).size.height*0.01,
+              height: MediaQuery.of(context).size.height * 0.01,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.04),
+              padding: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width * 0.04),
               child: Text(
                 widget.fullname,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height*0.0005,
+              height: MediaQuery.of(context).size.height * 0.0005,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.04),
+              padding: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width * 0.04),
               child: Text(widget.position,
                   style: TextStyle(fontSize: 15, color: Color(0xFF585C60))),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height*0.005,
+              height: MediaQuery.of(context).size.height * 0.005,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.04),
+              padding: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width * 0.04),
               child: Text(widget.bio,
                   style: TextStyle(fontSize: 15, color: Color(0xFF585C60))),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height*0.02,
+              height: MediaQuery.of(context).size.height * 0.02,
             ),
             Container(
-                height: MediaQuery.of(context).size.height*0.04,
+                height: MediaQuery.of(context).size.height * 0.04,
                 child: OutlinedButton(
                   child: Text(
                     '         Apply         ',
@@ -284,7 +395,7 @@ class _DiscoverState extends State<Discover> {
               ),*/
                 ),
             SizedBox(
-              height: MediaQuery.of(context).size.height*0.02,
+              height: MediaQuery.of(context).size.height * 0.02,
             )
           ],
         ),

@@ -87,7 +87,8 @@ class _MentorInfoState extends State<MentorInfo> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.08),
+                    padding: EdgeInsets.only(
+                        top: MediaQuery.of(context).size.height * 0.08),
                     child: Text(
                       'Create Your Profile',
                       textAlign: TextAlign.center,
@@ -100,24 +101,24 @@ class _MentorInfoState extends State<MentorInfo> {
                     ),
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height*0.04,
+                    height: MediaQuery.of(context).size.height * 0.04,
                   ),
                   Center(
                     child: CircleAvatar(
-                      radius: MediaQuery.of(context).size.width*0.125,
+                      radius: MediaQuery.of(context).size.width * 0.125,
                       child: _photo != null
                           ? Image.file(
                               _photo!,
-                              width: MediaQuery.of(context).size.width*0.25,
-                              height: MediaQuery.of(context).size.height*0.15,
+                              width: MediaQuery.of(context).size.width * 0.25,
+                              height: MediaQuery.of(context).size.height * 0.15,
                               fit: BoxFit.fitHeight,
                             )
                           : Container(
                               decoration: BoxDecoration(
                                   color: Colors.grey[200],
                                   borderRadius: BorderRadius.circular(50)),
-                              width: MediaQuery.of(context).size.width*0.25,
-                              height: MediaQuery.of(context).size.height*0.15,
+                              width: MediaQuery.of(context).size.width * 0.25,
+                              height: MediaQuery.of(context).size.height * 0.15,
                               child: Icon(
                                 Icons.camera_alt,
                                 color: Colors.grey[800],
@@ -126,7 +127,7 @@ class _MentorInfoState extends State<MentorInfo> {
                     ),
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height*0.015,
+                    height: MediaQuery.of(context).size.height * 0.015,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -147,11 +148,11 @@ class _MentorInfoState extends State<MentorInfo> {
                         child: ClipRRect(
                             child: Image.asset(
                           'images/Take_A_pic.png',
-                          height: MediaQuery.of(context).size.height*0.022,
+                          height: MediaQuery.of(context).size.height * 0.022,
                         )),
                       ),
                       SizedBox(
-                        width: MediaQuery.of(context).size.width*0.03,
+                        width: MediaQuery.of(context).size.width * 0.03,
                       ),
                       GestureDetector(
                         onTap: () async {
@@ -168,18 +169,18 @@ class _MentorInfoState extends State<MentorInfo> {
                         child: ClipRRect(
                             child: Image.asset(
                           'images/Upload_a_pic.png',
-                          height: MediaQuery.of(context).size.height*0.02,
+                          height: MediaQuery.of(context).size.height * 0.02,
                         )),
                       ),
                     ],
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height*0.02,
+                    height: MediaQuery.of(context).size.height * 0.02,
                   ),
                   Row(
                     children: [
                       SizedBox(
-                        width: MediaQuery.of(context).size.width*0.03,
+                        width: MediaQuery.of(context).size.width * 0.03,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -193,8 +194,8 @@ class _MentorInfoState extends State<MentorInfo> {
                             ),
                           ),
                           SizedBox(
-                            width: MediaQuery.of(context).size.width*0.3,
-                            height: MediaQuery.of(context).size.height*0.035,
+                            width: MediaQuery.of(context).size.width * 0.3,
+                            height: MediaQuery.of(context).size.height * 0.035,
                             child: TextField(
                               autocorrect: false,
                               style: TextStyle(
@@ -232,7 +233,7 @@ class _MentorInfoState extends State<MentorInfo> {
                         ],
                       ),
                       SizedBox(
-                        width: MediaQuery.of(context).size.width*0.04,
+                        width: MediaQuery.of(context).size.width * 0.04,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -245,8 +246,8 @@ class _MentorInfoState extends State<MentorInfo> {
                             ),
                           ),
                           SizedBox(
-                            width: MediaQuery.of(context).size.width*0.32,
-                            height: MediaQuery.of(context).size.height*0.035,
+                            width: MediaQuery.of(context).size.width * 0.32,
+                            height: MediaQuery.of(context).size.height * 0.035,
                             child: TextField(
                               autocorrect: false,
                               style: TextStyle(
@@ -286,10 +287,11 @@ class _MentorInfoState extends State<MentorInfo> {
                     ],
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height*0.01,
+                    height: MediaQuery.of(context).size.height * 0.01,
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.025),
+                    padding: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width * 0.025),
                     child: Row(
                       children: [
                         Column(
@@ -304,8 +306,9 @@ class _MentorInfoState extends State<MentorInfo> {
                               ),
                             ),
                             SizedBox(
-                              height: MediaQuery.of(context).size.height*0.035,
-                              width: MediaQuery.of(context).size.width*0.3,
+                              height:
+                                  MediaQuery.of(context).size.height * 0.035,
+                              width: MediaQuery.of(context).size.width * 0.3,
                               child: TextField(
                                 autocorrect: false,
                                 controller: textControllerDate,
@@ -348,7 +351,7 @@ class _MentorInfoState extends State<MentorInfo> {
                           ],
                         ),
                         SizedBox(
-                          width: MediaQuery.of(context).size.width*0.04,
+                          width: MediaQuery.of(context).size.width * 0.04,
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -361,8 +364,9 @@ class _MentorInfoState extends State<MentorInfo> {
                               ),
                             ),
                             SizedBox(
-                              width: MediaQuery.of(context).size.width*0.33,
-                              height: MediaQuery.of(context).size.height*0.035,
+                              width: MediaQuery.of(context).size.width * 0.33,
+                              height:
+                                  MediaQuery.of(context).size.height * 0.035,
                               child: TextField(
                                 autocorrect: false,
                                 style: TextStyle(
@@ -403,10 +407,11 @@ class _MentorInfoState extends State<MentorInfo> {
                     ),
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height*0.005,
+                    height: MediaQuery.of(context).size.height * 0.005,
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.025),
+                    padding: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width * 0.025),
                     child: Text(
                       'Bio',
                       textAlign: TextAlign.start,
@@ -417,10 +422,11 @@ class _MentorInfoState extends State<MentorInfo> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.025),
+                    padding: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width * 0.025),
                     child: SizedBox(
-                      width: MediaQuery.of(context).size.width*0.5,
-                      height: MediaQuery.of(context).size.height*0.2,
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      height: MediaQuery.of(context).size.height * 0.2,
                       child: TextField(
                         autocorrect: false,
                         keyboardType: TextInputType.multiline,
@@ -467,6 +473,7 @@ class _MentorInfoState extends State<MentorInfo> {
                       Expanded(
                         child: GestureDetector(
                           onTap: () async {
+                            loggedInUser.updateDisplayName("mentor");
                             await collectionUser
                                 .doc(loggedInUser.email.toString())
                                 .update({
@@ -475,7 +482,16 @@ class _MentorInfoState extends State<MentorInfo> {
                               'birthdate': birthdate,
                               'interests': interests,
                               'bio': bio,
-                              'mentee': ''
+                              'mentee': '',
+                              'task1': '',
+                              'task2': '',
+                              'task3': '',
+                              'task4': '',
+                              't1': '-',
+                              't2': '-',
+                              't3': '-',
+                              't4': '-',
+                              'stage': 0,
                             });
                             Navigator.pushNamed(context, MentorCover.id);
                           },
