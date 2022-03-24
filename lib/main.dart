@@ -26,6 +26,9 @@ import 'package:mentearn/screens/home_screen_mentie_screens/discover.dart';
 import 'package:mentearn/screens/home_screen_mentie_screens/edit_profle_mentee.dart';
 import 'package:mentearn/screens/home_screen_mentor_screens/edit_profle_mentor.dart';
 import 'package:mentearn/screens/home_screen_mentor_screens/add_tasks.dart';
+import 'package:mentearn/get_started_screens/get_started1.dart';
+import 'package:mentearn/get_started_screens/get_started2.dart';
+import 'package:mentearn/get_started_screens/get_started3.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -56,7 +59,7 @@ class Mentearn extends StatefulWidget {
 }
 
 class _MentearnState extends State<Mentearn> {
-  String initPage = WelcomeScreen.id;
+  String initPage = GetStarted1.id;
 
   final FirebaseAuth auth = FirebaseAuth.instance;
 
@@ -67,19 +70,19 @@ class _MentearnState extends State<Mentearn> {
   @override
   void initState() {
     super.initState();
-    print("here, $initPage");
+    //print("here, $initPage");
     try {
-      print("here1, $initPage");
+      //print("here1, $initPage");
       currentUser = auth.currentUser!;
       if (currentUser != null) {
-        print("here2, $initPage");
-        print(currentUser.displayName);
+        //print("here2, $initPage");
+        //print(currentUser.displayName);
         if (currentUser.displayName == "mentee") {
-          print("here21, $initPage");
+          //print("here21, $initPage");
           initPage = HomeScreenMentee.id;
         }
         if (currentUser.displayName == "mentor") {
-          print("here22, $initPage");
+          //print("here22, $initPage");
           initPage = HomeScreenMentor.id;
         }
 
@@ -87,13 +90,13 @@ class _MentearnState extends State<Mentearn> {
       here id is static variable which declare as a page name.
        */
       } else {
-        print("here3, $initPage");
-        initPage = WelcomeScreen.id;
+        //print("here3, $initPage");
+        initPage = GetStarted1.id;
       }
     } catch (e) {
-      print("here4, $initPage");
+      //print("here4, $initPage");
       print(e);
-      initPage = WelcomeScreen.id;
+      initPage = GetStarted1.id;
     }
   }
 
@@ -122,6 +125,9 @@ class _MentearnState extends State<Mentearn> {
         EditProfileMentee.id: (context) => EditProfileMentee(),
         EditProfileMentor.id: (context) => EditProfileMentor(),
         AddTasks.id: (context) => AddTasks(),
+        GetStarted1.id: (context) => GetStarted1(),
+        GetStarted2.id: (context) => GetStarted2(),
+        GetStarted3.id: (context) => GetStarted3(),
         //EditScreen.id: (context) => EditScreen(event: context,),
 
         //ChatScreen.id: (context) => ChatScreen(),
