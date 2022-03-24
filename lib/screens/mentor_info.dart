@@ -14,7 +14,7 @@ import 'package:file_picker/file_picker.dart';
 final _firestore = FirebaseFirestore.instance;
 late User loggedInUser;
 final CollectionReference collectionUser =
-    FirebaseFirestore.instance.collection('mentors');
+FirebaseFirestore.instance.collection('mentors');
 
 class MentorInfo extends StatefulWidget {
   static const String id = 'mentorInfo';
@@ -77,9 +77,11 @@ class _MentorInfoState extends State<MentorInfo> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
-        body: Row(crossAxisAlignment: CrossAxisAlignment.stretch, children: <
-            Widget>[
+        body: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
           Expanded(
             flex: 3,
             child: SafeArea(
@@ -108,22 +110,22 @@ class _MentorInfoState extends State<MentorInfo> {
                       radius: MediaQuery.of(context).size.width * 0.125,
                       child: _photo != null
                           ? Image.file(
-                              _photo!,
-                              width: MediaQuery.of(context).size.width * 0.25,
-                              height: MediaQuery.of(context).size.height * 0.15,
-                              fit: BoxFit.fitHeight,
-                            )
+                        _photo!,
+                        width: MediaQuery.of(context).size.width * 0.25,
+                        height: MediaQuery.of(context).size.height * 0.15,
+                        fit: BoxFit.fitHeight,
+                      )
                           : Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.grey[200],
-                                  borderRadius: BorderRadius.circular(50)),
-                              width: MediaQuery.of(context).size.width * 0.25,
-                              height: MediaQuery.of(context).size.height * 0.15,
-                              child: Icon(
-                                Icons.camera_alt,
-                                color: Colors.grey[800],
-                              ),
-                            ),
+                        decoration: BoxDecoration(
+                            color: Colors.grey[200],
+                            borderRadius: BorderRadius.circular(50)),
+                        width: MediaQuery.of(context).size.width * 0.25,
+                        height: MediaQuery.of(context).size.height * 0.15,
+                        child: Icon(
+                          Icons.camera_alt,
+                          color: Colors.grey[800],
+                        ),
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -142,14 +144,14 @@ class _MentorInfoState extends State<MentorInfo> {
                               .FirebaseStorage.instance
                               .ref("/profilePhotos")
                               .child(FirebaseAuth.instance.currentUser!.uid +
-                                  ".jpg");
+                              ".jpg");
                           await ppicRef.putFile(File(xFile.path));
                         },
                         child: ClipRRect(
                             child: Image.asset(
-                          'images/Take_A_pic.png',
-                          height: MediaQuery.of(context).size.height * 0.022,
-                        )),
+                              'images/Take_A_pic.png',
+                              height: MediaQuery.of(context).size.height * 0.022,
+                            )),
                       ),
                       SizedBox(
                         width: MediaQuery.of(context).size.width * 0.03,
@@ -163,14 +165,14 @@ class _MentorInfoState extends State<MentorInfo> {
                               .FirebaseStorage.instance
                               .ref("/profilePhotos")
                               .child(FirebaseAuth.instance.currentUser!.uid +
-                                  ".jpg");
+                              ".jpg");
                           await ppicRef.putFile(File(xFile.path));
                         },
                         child: ClipRRect(
                             child: Image.asset(
-                          'images/Upload_a_pic.png',
-                          height: MediaQuery.of(context).size.height * 0.02,
-                        )),
+                              'images/Upload_a_pic.png',
+                              height: MediaQuery.of(context).size.height * 0.02,
+                            )),
                       ),
                     ],
                   ),
@@ -212,20 +214,20 @@ class _MentorInfoState extends State<MentorInfo> {
                                     vertical: 1.0, horizontal: 5.0),
                                 border: OutlineInputBorder(
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(1.0)),
+                                  BorderRadius.all(Radius.circular(1.0)),
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                       color: Colors.lightBlue, width: 1.0),
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(1.0)),
+                                  BorderRadius.all(Radius.circular(1.0)),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                       color: Colors.lightBlue.shade900,
                                       width: 1.0),
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(1.0)),
+                                  BorderRadius.all(Radius.circular(1.0)),
                                 ),
                               ),
                             ),
@@ -264,20 +266,20 @@ class _MentorInfoState extends State<MentorInfo> {
                                     vertical: 1.0, horizontal: 5.0),
                                 border: OutlineInputBorder(
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(1.0)),
+                                  BorderRadius.all(Radius.circular(1.0)),
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                       color: Colors.lightBlue, width: 1.0),
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(1.0)),
+                                  BorderRadius.all(Radius.circular(1.0)),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                       color: Colors.lightBlue.shade900,
                                       width: 2.0),
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(1.0)),
+                                  BorderRadius.all(Radius.circular(1.0)),
                                 ),
                               ),
                             ),
@@ -307,13 +309,13 @@ class _MentorInfoState extends State<MentorInfo> {
                             ),
                             SizedBox(
                               height:
-                                  MediaQuery.of(context).size.height * 0.035,
+                              MediaQuery.of(context).size.height * 0.035,
                               width: MediaQuery.of(context).size.width * 0.3,
                               child: TextField(
                                 autocorrect: false,
                                 controller: textControllerDate,
                                 textCapitalization:
-                                    TextCapitalization.characters,
+                                TextCapitalization.characters,
                                 onTap: () => _selectDate(context),
                                 readOnly: true,
                                 style: TextStyle(
@@ -330,20 +332,20 @@ class _MentorInfoState extends State<MentorInfo> {
                                       vertical: 1.0, horizontal: 5.0),
                                   border: OutlineInputBorder(
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(1.0)),
+                                    BorderRadius.all(Radius.circular(1.0)),
                                   ),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                         color: Colors.lightBlue, width: 1.0),
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(1.0)),
+                                    BorderRadius.all(Radius.circular(1.0)),
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                         color: Colors.lightBlue.shade900,
                                         width: 1.0),
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(1.0)),
+                                    BorderRadius.all(Radius.circular(1.0)),
                                   ),
                                 ),
                               ),
@@ -366,7 +368,7 @@ class _MentorInfoState extends State<MentorInfo> {
                             SizedBox(
                               width: MediaQuery.of(context).size.width * 0.33,
                               height:
-                                  MediaQuery.of(context).size.height * 0.035,
+                              MediaQuery.of(context).size.height * 0.035,
                               child: TextField(
                                 autocorrect: false,
                                 style: TextStyle(
@@ -383,20 +385,20 @@ class _MentorInfoState extends State<MentorInfo> {
                                       vertical: 1.0, horizontal: 5.0),
                                   border: OutlineInputBorder(
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(1.0)),
+                                    BorderRadius.all(Radius.circular(1.0)),
                                   ),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                         color: Colors.lightBlue, width: 1.0),
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(1.0)),
+                                    BorderRadius.all(Radius.circular(1.0)),
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                         color: Colors.lightBlue.shade900,
                                         width: 2.0),
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(1.0)),
+                                    BorderRadius.all(Radius.circular(1.0)),
                                   ),
                                 ),
                               ),
@@ -445,19 +447,19 @@ class _MentorInfoState extends State<MentorInfo> {
                               vertical: 1.0, horizontal: 5.0),
                           border: OutlineInputBorder(
                             borderRadius:
-                                BorderRadius.all(Radius.circular(1.0)),
+                            BorderRadius.all(Radius.circular(1.0)),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderSide:
-                                BorderSide(color: Colors.lightBlue, width: 1.0),
+                            BorderSide(color: Colors.lightBlue, width: 1.0),
                             borderRadius:
-                                BorderRadius.all(Radius.circular(1.0)),
+                            BorderRadius.all(Radius.circular(1.0)),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                                 color: Colors.lightBlue.shade900, width: 1.0),
                             borderRadius:
-                                BorderRadius.all(Radius.circular(1.0)),
+                            BorderRadius.all(Radius.circular(1.0)),
                           ),
                         ),
                       ),
@@ -468,8 +470,8 @@ class _MentorInfoState extends State<MentorInfo> {
                     children: [
                       Expanded(
                           child: Container(
-                        color: Colors.white,
-                      )),
+                            color: Colors.white,
+                          )),
                       Expanded(
                         child: GestureDetector(
                           onTap: () async {
@@ -495,11 +497,13 @@ class _MentorInfoState extends State<MentorInfo> {
                             });
                             Navigator.pushNamed(context, MentorCover.id);
                           },
-                          child: ClipRRect(
-                            child: Icon(
-                              IconData(0xf03cf, fontFamily: 'MaterialIcons'),
-                              size: 50.0,
-                              color: Colors.lightBlue,
+                          child: Flexible(
+                            child: ClipRRect(
+                              child: Icon(
+                                IconData(0xf03cf, fontFamily: 'MaterialIcons'),
+                                size: 50.0,
+                                color: Colors.lightBlue,
+                              ),
                             ),
                           ),
                         ),
@@ -512,9 +516,9 @@ class _MentorInfoState extends State<MentorInfo> {
           ),
           Expanded(
               child: Image(
-            fit: BoxFit.cover,
-            image: AssetImage('images/mentor_side.png'),
-          ))
+                fit: BoxFit.cover,
+                image: AssetImage('images/mentor_side.png'),
+              ))
         ]),
       ),
     );

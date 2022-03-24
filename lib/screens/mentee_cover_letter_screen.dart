@@ -42,6 +42,7 @@ class _MenteeCoverState extends State<MenteeCover> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Stack(children: [
         Container(
           child: Image.asset(

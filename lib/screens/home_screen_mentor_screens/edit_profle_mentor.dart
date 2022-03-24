@@ -70,6 +70,7 @@ class _EditProfileMentorState extends State<EditProfileMentor> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           backgroundColor: Colors.orange,
           leading: IconButton(

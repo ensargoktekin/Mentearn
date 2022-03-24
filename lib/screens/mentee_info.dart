@@ -72,6 +72,7 @@ class _MenteeInfoState extends State<MenteeInfo> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
         body: Row(crossAxisAlignment: CrossAxisAlignment.stretch, children: <
             Widget>[

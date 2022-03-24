@@ -70,6 +70,7 @@ class _EditProfileMenteeState extends State<EditProfileMentee> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           backgroundColor: Colors.green,
           leading: IconButton(

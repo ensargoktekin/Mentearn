@@ -64,6 +64,7 @@ class _AddTasksState extends State<AddTasks> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Stack(children: [
         Container(
           alignment: Alignment.bottomCenter,
