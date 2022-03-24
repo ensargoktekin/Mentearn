@@ -55,17 +55,199 @@ class _InterestsState extends State<Interests> {
             vertical: MediaQuery.of(context).size.height * 0.02),
         children: [
           MentorAreaButton(
-              title: "Flutter",
+              title: "Artificial Intelligence",
               color: Colors.green,
               onPressed: () {
-                area = "Flutter";
+                area = "Artificial Intelligence";
                 Navigator.pushNamed(context, DiscoverStream.id);
               }),
           MentorAreaButton(
-              title: "Firebase",
+              title: "Backend Development",
               color: Colors.green,
               onPressed: () {
-                area = "Firebase";
+                area = "Backend Development";
+                Navigator.pushNamed(context, DiscoverStream.id);
+              }),
+          MentorAreaButton(
+              title: "Business Development",
+              color: Colors.green,
+              onPressed: () {
+                area = "Business Development";
+                Navigator.pushNamed(context, DiscoverStream.id);
+              }),
+          MentorAreaButton(
+              title: "Business Law",
+              color: Colors.green,
+              onPressed: () {
+                area = "Business Law";
+                Navigator.pushNamed(context, DiscoverStream.id);
+              }),
+          MentorAreaButton(
+              title: "Communication",
+              color: Colors.green,
+              onPressed: () {
+                area = "Communication";
+                Navigator.pushNamed(context, DiscoverStream.id);
+              }),
+          MentorAreaButton(
+              title: "Cyber Security",
+              color: Colors.green,
+              onPressed: () {
+                area = "Cyber Security";
+                Navigator.pushNamed(context, DiscoverStream.id);
+              }),
+          MentorAreaButton(
+              title: "Data Science",
+              color: Colors.green,
+              onPressed: () {
+                area = "Data Science";
+                Navigator.pushNamed(context, DiscoverStream.id);
+              }),
+          MentorAreaButton(
+              title: "Design",
+              color: Colors.green,
+              onPressed: () {
+                area = "Design";
+                Navigator.pushNamed(context, DiscoverStream.id);
+              }),
+          MentorAreaButton(
+              title: "Entrepreneurship",
+              color: Colors.green,
+              onPressed: () {
+                area = "Entrepreneurship";
+                Navigator.pushNamed(context, DiscoverStream.id);
+              }),
+          MentorAreaButton(
+              title: "Economy",
+              color: Colors.green,
+              onPressed: () {
+                area = "Economy";
+                Navigator.pushNamed(context, DiscoverStream.id);
+              }),
+          MentorAreaButton(
+              title: "Engineering",
+              color: Colors.green,
+              onPressed: () {
+                area = "Engineering";
+                Navigator.pushNamed(context, DiscoverStream.id);
+              }),
+          MentorAreaButton(
+              title: "Frontend Development",
+              color: Colors.green,
+              onPressed: () {
+                area = "Frontend Development";
+                Navigator.pushNamed(context, DiscoverStream.id);
+              }),
+          MentorAreaButton(
+              title: "Game Development",
+              color: Colors.green,
+              onPressed: () {
+                area = "Game Development";
+                Navigator.pushNamed(context, DiscoverStream.id);
+              }),
+          MentorAreaButton(
+              title: "Health and Sports",
+              color: Colors.green,
+              onPressed: () {
+                area = "Health and Sports";
+                Navigator.pushNamed(context, DiscoverStream.id);
+              }),
+          MentorAreaButton(
+              title: "Human Resources",
+              color: Colors.green,
+              onPressed: () {
+                area = "Human Resources";
+                Navigator.pushNamed(context, DiscoverStream.id);
+              }),
+          MentorAreaButton(
+              title: "Languages",
+              color: Colors.green,
+              onPressed: () {
+                area = "Languages";
+                Navigator.pushNamed(context, DiscoverStream.id);
+              }),
+          MentorAreaButton(
+              title: "Math",
+              color: Colors.green,
+              onPressed: () {
+                area = "Math";
+                Navigator.pushNamed(context, DiscoverStream.id);
+              }),
+          MentorAreaButton(
+              title: "Music",
+              color: Colors.green,
+              onPressed: () {
+                area = "Music";
+                Navigator.pushNamed(context, DiscoverStream.id);
+              }),
+          MentorAreaButton(
+              title: "Marketing",
+              color: Colors.green,
+              onPressed: () {
+                area = "Marketing";
+                Navigator.pushNamed(context, DiscoverStream.id);
+              }),
+          MentorAreaButton(
+              title: "Management",
+              color: Colors.green,
+              onPressed: () {
+                area = "Management";
+                Navigator.pushNamed(context, DiscoverStream.id);
+              }),
+          MentorAreaButton(
+              title: "Machine Learning",
+              color: Colors.green,
+              onPressed: () {
+                area = "Machine Learning";
+                Navigator.pushNamed(context, DiscoverStream.id);
+              }),
+          MentorAreaButton(
+              title: "Mobile Application Development",
+              color: Colors.green,
+              onPressed: () {
+                area = "Mobile Application Development";
+                Navigator.pushNamed(context, DiscoverStream.id);
+              }),
+          MentorAreaButton(
+              title: "Project Management",
+              color: Colors.green,
+              onPressed: () {
+                area = "Project Management";
+                Navigator.pushNamed(context, DiscoverStream.id);
+              }),
+          MentorAreaButton(
+              title: "Social Sciences",
+              color: Colors.green,
+              onPressed: () {
+                area = "Social Sciences";
+                Navigator.pushNamed(context, DiscoverStream.id);
+              }),
+          MentorAreaButton(
+              title: "Science",
+              color: Colors.green,
+              onPressed: () {
+                area = "Science";
+                Navigator.pushNamed(context, DiscoverStream.id);
+              }),
+          MentorAreaButton(
+              title: "Self-improvement",
+              color: Colors.green,
+              onPressed: () {
+                area = "Self-improvement";
+                Navigator.pushNamed(context, DiscoverStream.id);
+              }),
+          MentorAreaButton(
+              title: "Sales",
+              color: Colors.green,
+              onPressed: () {
+                area = "Sales";
+                Navigator.pushNamed(context, DiscoverStream.id);
+              }),
+          MentorAreaButton(
+              title: "Web Development",
+              color: Colors.green,
+              onPressed: () {
+                area = "Web Development";
                 Navigator.pushNamed(context, DiscoverStream.id);
               }),
         ],
